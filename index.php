@@ -21,7 +21,7 @@ session_start(); // Inicia a sessão
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>GAME X</title>
+    <title>GameX</title>
     <link rel="stylesheet" href="home/styles.css">
     <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">

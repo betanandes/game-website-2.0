@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* overflow: hidden; */
+}
+
+header {
+    background-color: #ff80b3;
+    padding: 15px 30px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    color: #fff;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 1px;
+    margin-left: 35px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.nav-links li a:hover {
+    text-decoration: none;
+    color: #6a9eda;
+    font-weight: 600;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn.login {
+    background-color: #d856cd;
+    color: white;
+}
+
+.btn.login:hover {
+    background-color: #6a9eda;
+    color: white;
+}
+
+.btn.cadastro {
+    background-color: #d856cd;
+    color: white;
+}
+
+.btn.cadastro:hover {
+    background-color: #6a9eda;
+    color: white;
+}
+
+.btn.comprar {
+    background-color: #ff66cc;
+    color: white;
+}
+
+.btn.comprar:hover {
+    background-color: #6a9eda;
+    color: white;
+}
+
+.hamburguer {
+    display: none;
+    color: #660099;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 100; /* Traz o hambúrguer para frente */
+    position: relative; /* Certifica que o z-index será aplicado */
+}
+
+/* Estilização do filtro */
+
+.filtro-jogos {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+/* Catálogo de compras */
+
+.jogos-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+
+.item img {
+    width: 100%;
+    height: auto; /* Mantém a proporção 2:3 (vertical) */
+    max-width: 300px; /* Limita a largura máxima da imagem */
+    max-height: 450px; /* Limita a altura máxima da imagem */
+    object-fit: cover; /* Cobre o espaço disponível no card sem distorcer a imagem */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.item h3 {
+    font-size: 20px;
+    margin-bottom: 10px; 
+}
+
+.item p {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.item button {
+    background-color: #ff66cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.item button:hover {
+    background-color: #ff3399;
+}
+
+
+/* Seção de avaliações */
+.avaliacoes {
+    background-color: #f7f7f7;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 1200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.avaliacoes h2 {
+    font-size: 1.8em;
+    color: #660099;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Layout de comentários lado a lado */
+.comments-flex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.comment {
+    display: flex;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    flex: 1 1 calc(50% - 20px); /* Ocupa metade da largura da linha com espaçamento */
+    max-width: 48%; /* Garante que o comentário não ultrapasse 48% da largura total */
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.comment:hover {
+    transform: translateY(-5px);
+}
+
+.comment-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-text {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.comment-author {
+    font-size: 1em;
+    color: #999;
+}
+
+/* Formulário para novos comentários */
+#comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#comment-input,
+#author-input,
+#avatar-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+}
+
+#comment-input {
+    min-height: 80px;
+}
+
+#comment-form button {
+    padding: 10px 20px;
+    background-color: #ff66cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+}
+
+#comment-form button:hover {
+    background-color: #ff3399;
+}
+
+
+footer {
+    background-color: #6a9eda;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+
+#dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #333;
+    color: #333;
+}
+
+body.dark-mode header {
+    background-color: #660099;
+}
+
+body.dark-mode .nav-links {
+    background-color: #660099;
+}
+
+body.dark-mode .hamburguer {
+    color: #ff66cc;
+}
+
+body.dark-mode .filtro-jogos {
+    color: #f2f2f2;
+}
+
+body.dark-mode footer {
+    background-color: #111;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav-actions {
+        display: none;
+    }
+
+    .hamburguer {
+        display: block;
+        position: fixed; /* Torna o ícone fixo para que ele sempre fique visível */
+        top: 20px;
+        right: 20px;
+        z-index: 100; /* Certifica que o hambúrguer ficará sobreposto ao carrossel */
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #ff80b3;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 100;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .item img {
+        max-width: 200px; /* Ajuste automático para telas menores */
+        max-height: 300px;
+    }
+
+    .comment {
+        flex: 1 1 100%; /* Ajusta o comentário para ocupar 100% da largura em telas menores */
+        max-width: 100%;
+    }
+
+}
+
+/* Esconder scrollbar */
+
+::-webkit-scrollbar {
+    width: 0px;
+}

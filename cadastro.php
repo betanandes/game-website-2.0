@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Criar Usuário</title>
+    <title>Cadastre-se</title>
 </head>
 <body>
     <h1>Criar Usuário</h1>

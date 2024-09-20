@@ -53,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Cadastre-se</title>
+    <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
 </head>
 <body>
     <h1>Criar Usuário</h1>

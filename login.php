@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Entrar</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login/css/style.css">
+    <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
 </head>
 <body>
 

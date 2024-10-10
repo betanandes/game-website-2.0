@@ -29,19 +29,28 @@ session_start(); // Inicia a sessão
     <!-- Serve para linkar o css do bootstrap mais facilmente. -->
 </head>
 <body>
-    <!-- <h1>Bem-vindo ao sistema</h1> -->
+
+    <!-- Navbar -->
 
     <header>
         <nav>
             <div class="logo">
-                <img src="assets/gamex-logo-2.png" alt="">
+                <img src="assets/gamex-logo-original2.png" alt="">
             </div>
             <div class="nav-container">
                 <ul id="nav-links" class="nav-links">
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Jogos</a></li>
-                    <li><a href="#">Carrinho</a></li>
-                    <li><a href="#">Contato</a></li>
+                    <li>
+                        <a href="error/error.html">Novidades</a>
+                    </li>
+                    <li>
+                        <a href="error/error.html">Ofertas</a>
+                    </li>
+                    <li>
+                        <a href="error/error.html">Assinaturas</a>
+                    </li>
+                    <li>
+                        <a href="error/error.html">Navegar</a>
+                    </li>
                 </ul>
                 <div class="nav-actions">
      
@@ -77,34 +86,34 @@ session_start(); // Inicia a sessão
 
        <!-- Carrossel -->
 
-       <div class="carousel slide" id="carouselDemo" data-bs-wrap="true" data-bs-ride="carousel" data-bs-interval="3000">
+       <div class="carousel slide" id="carouselDemo" data-bs-wrap="true" data-bs-ride="carousel" data-bs-interval="2000">
 
-<div class="carousel-inner">
+            <div class="carousel-inner">
 
-    <div class="carousel-item active">
-        <img src="assets/Design sem nome/gta-banner.png" class="w-100" alt="">
-    </div>
+                <div class="carousel-item active">
+                    <img src="assets/banner/stone.png" class="w-100" alt="">
+                </div>
 
-    <div class="carousel-item">
-        <img src="assets/Design sem nome/stardew-banner.png" class="w-100" alt="">
-    </div>
-        
-    <div class="carousel-item">
-        <img src="assets/Design sem nome/stone-banner.png" class="w-100" alt="">
-    </div>
+                <div class="carousel-item">
+                    <img src="assets/banner/stardew.png" class="w-100" alt="">
+                </div>
+                
+                <div class="carousel-item">
+                    <img src="assets/banner/gta.png" class="w-100" alt="">
+            </div>
 
 </div>
 
-<button class="carousel-control-prev" 
-type="button"
-data-bs-target="#carouselDemo" data-bs-slide="prev">
-    <span class="carosel-control-prev-icon"></span>
-</button>
+        <button class="carousel-control-prev" 
+        type="button"
+        data-bs-target="#carouselDemo" data-bs-slide="prev">
+            <span class="carosel-control-prev-icon"></span>
+        </button>
 
-<button class="carousel-control-next" type="button"
-data-bs-target="#carouselDemo" data-bs-slide="next">
-<span class="carosel-control-next-icon"></span>
-</button>
+        <button class="carousel-control-next" type="button"
+        data-bs-target="#carouselDemo" data-bs-slide="next">
+            <span class="carosel-control-next-icon"></span>
+        </button>
 
 
 </div>
@@ -117,145 +126,206 @@ data-bs-target="#carouselDemo" data-bs-slide="next">
     <option value="todos">Todos</option>
     <option value="acao">Ação</option>
     <option value="aventura">Aventura</option>
+    <option value="luta">Luta</option>
     <option value="rpg">RPG</option>
+    <option value="terror">Terror</option>
 </select>
 </section>
 
 <!-- Catálogo de Jogos -->
 
 <section class="catalogo">
-<div id="catalogo-jogos" class="jogos-container">
-<div class="item" data-categoria="acao">
-    <img src="jogo1.jpg" alt="Jogo 1">
-    <h3>Jogo 1</h3>
-    <p>R$ 59,90</p>
-    <button class="btn comprar" onclick="">Comprar</button>
-</div>
-<div class="item">
-    <img src="jogo2.jpg" alt="Jogo 2">
-    <h3>Jogo 2</h3>
-    <p>R$ 79,90</p>
-    <button class="btn comprar">Comprar</button>
-</div>
+    <div id="catalogo-jogos" class="jogos-container">
+        <div class="item" data-categoria="rpg">
+            <img src="assets/produtos/ELDEN-RING.avif" alt="Jogo 1">
+            <h3>Elden Ring</h3>
+            <p>R$299,90</p>
+            <button class="btn comprar" onclick="">Comprar</button>
+        </div>
+        <div class="item" data-categoria="aventura">
+            <img src="assets/produtos/Marvel's Spider-Man 2.avif" alt="Jogo 2">
+            <h3>Marvel’s Spider-Man 2</h3>
+            <p>R$349,90</p>
+            <button class="btn comprar">Comprar</button>
+        </div>
 
-<div class="item">
-    <img src="jogo3.jpg" alt="Jogo 3">
-    <h3>Jogo 3</h3>
-    <p >R$ 79,90</p>
-    <button class="btn comprar">Comprar</button>
-</div>
+        <div class="item" data-categoria="rpg">
+            <img src="assets/produtos/Black Myth-Wukong.avif" alt="Jogo 3">
+            <h3>Black Myth: Wukong</h3>
+            <p>R$299,90</p>
+            <button class="btn comprar">Comprar</button>
+        </div>
 
-<div class="item">
-    <img src="jogo4.jpg" alt="Jogo 4">
-    <h3>Jogo 4</h3>
-    <p>R$ 79,90</p>
-    <button class="btn comprar">Comprar</button>
-</div>
+        <div class="item" data-categoria="terror">
+            <img src="assets/produtos/Resident Evil Village.jpeg" alt="Jogo 4">
+            <h3>Resident Evil Village </h3>
+            <p>R$184,50</p>
+            <button class="btn comprar">Comprar</button>
+        </div>
 
-<div class="item">
-    <img src="jogo5.jpg" alt="Jogo 5">
-    <h3>Jogo 5</h3>
-    <p>R$ 79,90</p>
-    <button class="btn comprar">Comprar</button>
-</div>
+        <div class="item" data-categoria="luta">
+            <img src="assets/produtos/DRAGON BALL.avif" alt="Jogo 5">
+            <h3>Dragon Ball</h3>
+            <p>R$349,90</p>
+            <button class="btn comprar">Comprar</button>
+        </div>
 
-<div class="item">
-    <img src="jogo6.jpg" alt="Jogo 6">
-    <h3>Jogo 6</h3>
-    <p>R$ 79,90</p>
-    <button class="btn comprar">Comprar</button>
-</div>
+        <div class="item" data-categoria="terror">
+            <img src="assets/produtos/Dead by Daylight.webp" alt="Jogo 6">
+            <h3>Dead by Daylight</h3>
+            <p>R$149,50</p>
+            <button class="btn comprar">Comprar</button>
+        </div>
 
-<div class="item">
-    <img src="jogo7.jpg" alt="Jogo 7">
-    <h3>Jogo 7</h3>
-    <p >R$ 79,90</p>
-    <button class="btn comprar">Comprar</button>
-</div>
+        <div class="item" data-categoria="aventura">
+            <img src="assets/produtos/God of War Ragnarök.jpeg" alt="Jogo 7">
+            <h3>God of War Ragnarök</h3>
+            <p>R$349,90</p>
+            <button class="btn comprar">Comprar</button>
+        </div>
 
-<div class="item">
-    <img src="jogo8.jpg" alt="Jogo 8">
-    <h3>Jogo 8</h3>
-    <p>R$ 79,90</p>
-    <button class="btn comprar">Comprar</button>
-</div>
+        <div class="item" data-categoria="acao">
+            <img src="assets/produtos/Cyberpunk 2077.webp" alt="Jogo 8">
+            <h3>Cyberpunk 2077</h3>
+            <p>R$249,50</p>
+            <button class="btn comprar">Comprar</button>
+        </div>
+        
+        <div class="item" data-categoria="rpg">
+            <img src="assets/produtos/Hogwarts Legacy.webp" alt="Jogo 9">
+            <h3>Hogwarts Legacy</h3>
+            <p>R$249,90</p>
+            <button class="btn comprar">Comprar</button>
+        </div>
 
-<div class="item">
-    <img src="jogo9.jpg" alt="Jogo 9">
-    <h3>Jogo 9</h3>
-    <p>R$ 79,90</p>
-    <button class="btn comprar">Comprar</button>
-</div>
+        <div class="item" data-categoria="luta">
+            <img src="assets/produtos/Mortal Kombat1.avif" alt="Jogo 10">
+            <h3>Mortal Kombat 1</h3>
+            <p>R$249,99</p>
+            <button class="btn comprar">Comprar</button>
+        </div>
 
-<div class="item">
-    <img src="jogo10.jpg" alt="Jogo 10">
-    <h3>Jogo 10</h3>
-    <p>R$ 79,90</p>
-    <button class="btn comprar">Comprar</button>
-</div>
+        <div class="item" data-categoria="luta">
+            <img src="assets/produtos/NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS.avif" alt="Jogo 11">
+            <h3>Naruto X Boruto</h3>
+            <p>R$149,95</p>
+            <button class="btn comprar">Comprar</button>
+        </div>
 
-<!-- <div class="item">
-    <img src="jogo11.jpg" alt="Jogo 11">
-    <h3>Jogo 11</h3>
-    <p>R$ 79,90</p>
-    <button class="btn comprar">Comprar</button>
-</div>
-
-<div class="item">
-    <img src="jogo12.jpg" alt="Jogo 12">
-    <h3>Jogo 12</h3>
-    <p>R$ 79,90</p>
-    <button class="btn comprar">Comprar</button>
-</div> -->
-</div>
-<!-- Adicione os outros jogos aqui -->
-</section>
-
-<section class="avaliacoes">
-<h2>Avaliações da Loja</h2>
-
-<!-- Área para exibir comentários em colunas -->
-<div id="comments" class="comments-flex">
-    <div class="comment">
-        <img src="colaborador1.jpg" alt="Choi Jungeun" class="comment-avatar">
-        <div class="comment-content">
-            <p class="comment-text">"Ótima loja, recomendo!"</p>
-            <p class="comment-author">- Choi Jungeun</p>
+        <div class="item" data-categoria="aventura">
+            <img src="assets/produtos/The Last of Us™ Part II.avif" alt="Jogo 12">
+            <h3>The Last of Us Part II</h3>
+            <p>R$199,50</p>
+            <button class="btn comprar">Comprar</button>
         </div>
     </div>
-    <div class="comment">
-        <img src="colaborador2.jpg" alt="Jeong Saebi" class="comment-avatar">
-        <div class="comment-content">
-            <p class="comment-text">"Excelente atendimento e entrega rápida."</p>
-            <p class="comment-author">- Jeong Saebi</p>
+        <!-- Adicione os outros jogos aqui -->
+    </section>
+
+    <section class="avaliacoes">
+        <h2>Avaliações da Loja</h2>
+    
+        <!-- Área para exibir comentários em colunas -->
+        <div id="comments" class="comments-flex">
+            <div class="comment">
+                <img src="assets/icons/͏♪   ༷ ़   𔓘.jpeg" alt="Choi Jungeun" class="comment-avatar">
+                <div class="comment-content">
+                    <p class="comment-text">"Ótima loja, recomendo!"</p>
+                    <p class="comment-author">- Choi Jungeun</p>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="assets/icons/💌.jpeg" alt="Jeong Saebi" class="comment-avatar">
+                <div class="comment-content">
+                    <p class="comment-text">"Excelente variedade de jogos e os preços são ótimos!"</p>
+                    <p class="comment-author">- Jeong Saebi</p>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="assets/icons/♡.jpeg" alt="Natty" class="comment-avatar">
+                <div class="comment-content">
+                    <p class="comment-text">"Site bem fácil de dialogar e a compra é simples de se fazer."</p>
+                    <p class="comment-author">- Natty</p>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="assets/icons/✶.jpeg" alt="NingNing" class="comment-avatar">
+                <div class="comment-content">
+                    <p class="comment-text">"Super fácil de comprar, trâmite excelente."</p>
+                    <p class="comment-author">- Ning Ning</p>
+                </div>
+            </div>
+
+
         </div>
-    </div>
-    <div class="comment">
-        <img src="colaborador2.jpg" alt="Natty" class="comment-avatar">
-        <div class="comment-content">
-            <p class="comment-text">"Excelente atendimento e entrega rápida."</p>
-            <p class="comment-author">- Natty</p>
+ 
+    </section>
+    
+    
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footerLeft">
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">Sobre Nós</h1>
+                <ul class="fList">
+                    <li class="fListItem">Empresa</li>
+                    <li class="fListItem">Contato</li>
+                    <li class="fListItem">Lojas</li>
+                </ul>
+            </div>
+
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">Links Úteis</h1>
+                <ul class="fList">
+                    <li class="fListItem">Suporte</li>
+                    <li class="fListItem">Reembolso</li>
+                    <li class="fListItem">Feedback</li>
+                </ul>
+            </div>
+
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">Categorias</h1>
+                <ul class="fList">
+                    <li class="fListItem">Ação</li>
+                    <li class="fListItem">Aventura</li>
+                    <li class="fListItem">Estratégia</li>
+                    <li class="fListItem">RPG</li>
+                    <li class="fListItem">Terror</li>
+          
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="comment">
-        <img src="colaborador2.jpg" alt="NingNing" class="comment-avatar">
-        <div class="comment-content">
-            <p class="comment-text">"Excelente atendimento e entrega rápida."</p>
-            <p class="comment-author">- Ning Ning</p>
+        <div class="footerRight">
+            <div class="footerRightMenu">
+                <!-- <h1 class="fMenuTitle">Inscreva-se em nossa newsletter</h1>
+                <div class="fMail">
+                    <input type="text" placeholder="seu@email.com" class="fInput">
+                    <button class="fButton">Junte-se!</button>
+                </div> -->
+            </div>
+            <div class="footerRightMenu">
+                <h1 class="fMenuTitle">Siga-nos</h1>
+                <div class="fIcons">
+                    <a href="https://www.linkedin.com/in/roberta-fernandes-a067b9167/">
+                        <img src="assets/icons/linkedin.png" alt="" class="fIcon">
+                    </a>
+                    <a href="https://github.com/betanandes">
+                        <img src="assets/icons/github.png" alt="" class="fIcon">
+                    </a>
+                    <a href="https://www.instagram.com/robertanands/">
+                        <img src="assets/icons/instagram.png" alt="" class="fIcon">
+                    </a>
+                </div>
+            </div>
+            <div class="footerRightMenu">
+                <p>&copy; 2024 GameX. Todos os direitos reservados aos alunos UNISUAM.</p>
+            </div>
         </div>
-    </div>
-
-
-</div>
-
-</section>
-
-
-<!-- Footer -->
-
-<footer>
-<p>&copy; 2024 GameX. Todos os direitos reservados aos alunos UNISUAM.</p>
-</footer>
+        
+    </footer>
 
 <button id="dark-mode-toggle">Dark Mode</button>
 

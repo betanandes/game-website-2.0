@@ -1,3 +1,12 @@
+:root {
+    --pink-one: #EA638C;
+    --pink-two: #ff3399;
+    --purple-one: #660099;
+    --lavander: #AC80A0;
+    --dark: #333;
+
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +22,7 @@ body {
 }
 
 header {
-    background-color: #ff80b3;
+    background-color: #EA638C;
     padding: 15px 30px;
 }
 
@@ -50,7 +59,7 @@ nav {
 
 .nav-links li a:hover {
     text-decoration: none;
-    color: #6a9eda;
+    color: #660099;
     font-weight: 600;
 }
 
@@ -71,41 +80,43 @@ nav {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
 }
 
 .btn.login {
-    background-color: #d856cd;
+    background-color: var(--pink-one);
     color: white;
+    
 }
 
 .btn.login:hover {
-    background-color: #6a9eda;
+    background-color: var(--purple-one);
     color: white;
 }
 
 .btn.cadastro {
-    background-color: #d856cd;
+    background-color: var(--pink-one);
     color: white;
 }
 
 .btn.cadastro:hover {
-    background-color: #6a9eda;
+    background-color: var(--purple-one);
     color: white;
 }
 
 .btn.comprar {
-    background-color: #ff66cc;
+    background-color: var(--pink-one);
     color: white;
 }
 
 .btn.comprar:hover {
-    background-color: #6a9eda;
+    background-color: var(--purple-one);
     color: white;
 }
 
 .hamburguer {
     display: none;
-    color: #660099;
+    color: var(--purple-one);
     font-size: 20px;
     cursor: pointer;
     z-index: 100; /* Traz o hambúrguer para frente */
@@ -161,7 +172,7 @@ nav {
 }
 
 .item h3 {
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: 10px; 
 }
 
@@ -172,7 +183,7 @@ nav {
 }
 
 .item button {
-    background-color: #ff66cc;
+    background-color: var(--pink-one);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -183,7 +194,7 @@ nav {
 }
 
 .item button:hover {
-    background-color: #ff3399;
+    background-color: var(--pink-one);
 }
 
 
@@ -253,7 +264,7 @@ nav {
     color: #999;
 }
 
-/* Formulário para novos comentários */
+/* Comentários */
 #comment-form {
     display: flex;
     flex-direction: column;
@@ -274,29 +285,79 @@ nav {
     min-height: 80px;
 }
 
-#comment-form button {
-    padding: 10px 20px;
-    background-color: #ff66cc;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: flex-end;
-}
-
-#comment-form button:hover {
-    background-color: #ff3399;
-}
-
 
 footer {
-    background-color: #6a9eda;
-    color: white;
+    display: flex;
+    background-color: var(--pink-one);
+    color: #fff;
     padding: 20px;
     text-align: center;
 }
+
+.footerLeft {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.fMenuTitle {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.fList {
+    padding: 0;
+    list-style: none;
+}
+
+.fListItem {
+    margin-bottom: 10px;
+    color: #fff;
+    cursor: pointer;
+    
+}
+
+.fListItem:hover {
+    color: var(--purple-one);
+
+}
+
+.footerRight {
+    flex: 1;   
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fInput {
+    padding: 5px;
+}
+
+.fButton {
+    padding: 5px;
+    background-color: var(--purple-one);
+    color: #fff;
+}
+
+
+.fIcons {
+    /* display: flex; */
+    
+}
+
+.fIcon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+footer p {
+    margin-top: 10px;
+}
+
 
 
 #dark-mode-toggle {
@@ -304,7 +365,7 @@ footer {
     bottom: 20px;
     right: 20px;
     padding: 10px 20px;
-    background-color: #333;
+    background-color: #550381;
     color: white;
     border: none;
     border-radius: 10px;
@@ -318,11 +379,11 @@ body.dark-mode {
 }
 
 body.dark-mode header {
-    background-color: #660099;
+    background-color: var(--lavander);
 }
 
 body.dark-mode .nav-links {
-    background-color: #660099;
+    background-color: var(--lavander);
 }
 
 body.dark-mode .hamburguer {
@@ -336,6 +397,32 @@ body.dark-mode .filtro-jogos {
 body.dark-mode footer {
     background-color: #111;
 }
+
+body.dark-mode .fListItem {
+    margin-bottom: 10px;
+    color: gray;
+    cursor: pointer;
+    
+}
+
+body.dark-mode .fButton {
+    padding: 5px;
+    background-color: var(--pink-one);
+    color: #fff;
+}
+
+body.dark-mode #dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: var(--pink-one);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -375,6 +462,23 @@ body.dark-mode footer {
     .comment {
         flex: 1 1 100%; /* Ajusta o comentário para ocupar 100% da largura em telas menores */
         max-width: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footerLeft {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .footerRight {
+        padding: 20px;
+        width: 90%;
+        align-items: center;
+        background-color: #550381;
     }
 
 }

@@ -228,28 +228,28 @@ session_start(); // Inicia a sessão
         <!-- Área para exibir comentários em colunas -->
         <div id="comments" class="comments-flex">
             <div class="comment">
-                <img src="assets/icons/͏♪   ༷ ़   𔓘.jpeg" alt="Choi Jungeun" class="comment-avatar">
+                <img src="assets/icons/s2.jpeg" alt="Choi Jungeun" class="comment-avatar">
                 <div class="comment-content">
                     <p class="comment-text">"Ótima loja, recomendo!"</p>
                     <p class="comment-author">- Choi Jungeun</p>
                 </div>
             </div>
             <div class="comment">
-                <img src="assets/icons/💌.jpeg" alt="Jeong Saebi" class="comment-avatar">
+                <img src="assets/icons/saebi.jpeg" alt="Jeong Saebi" class="comment-avatar">
                 <div class="comment-content">
                     <p class="comment-text">"Excelente variedade de jogos e os preços são ótimos!"</p>
                     <p class="comment-author">- Jeong Saebi</p>
                 </div>
             </div>
             <div class="comment">
-                <img src="assets/icons/♡.jpeg" alt="Natty" class="comment-avatar">
+                <img src="assets/icons/natty.jpeg" alt="Natty" class="comment-avatar">
                 <div class="comment-content">
                     <p class="comment-text">"Site bem fácil de dialogar e a compra é simples de se fazer."</p>
                     <p class="comment-author">- Natty</p>
                 </div>
             </div>
             <div class="comment">
-                <img src="assets/icons/✶.jpeg" alt="NingNing" class="comment-avatar">
+                <img src="assets/icons/ningning.jpeg" alt="NingNing" class="comment-avatar">
                 <div class="comment-content">
                     <p class="comment-text">"Super fácil de comprar, trâmite excelente."</p>
                     <p class="comment-author">- Ning Ning</p>
@@ -299,13 +299,7 @@ session_start(); // Inicia a sessão
             </div>
         </div>
         <div class="footerRight">
-            <div class="footerRightMenu">
-                <!-- <h1 class="fMenuTitle">Inscreva-se em nossa newsletter</h1>
-                <div class="fMail">
-                    <input type="text" placeholder="seu@email.com" class="fInput">
-                    <button class="fButton">Junte-se!</button>
-                </div> -->
-            </div>
+
             <div class="footerRightMenu">
                 <h1 class="fMenuTitle">Siga-nos</h1>
                 <div class="fIcons">

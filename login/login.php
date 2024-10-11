@@ -44,10 +44,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Entrar</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="login/css/style.css">
+    <link rel="stylesheet" href="/game-website-2.0/login/css/style.css">
+
     <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
 </head>
 <body>
+
+
+    <!-- <h1>Login</h1>
+    
+    
+    
+    <form method="POST" action="login.php">
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" required><br>
+
+        <button type="submit">Login</button>
+    </form> -->
+
 
     <div class="form">
     
@@ -107,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         
         </form>
-
+    
 
     </div>
 

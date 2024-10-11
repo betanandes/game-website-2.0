@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pergunta1 = "Qual o nome de sua mãe?";
     $resposta1 = $_POST['resposta1'];
 
-    $pergunta2 = "Em que cidade você nasceu?";
+    $pergunta2 = "Qual é o seu CEP";
     $resposta2 = $_POST['resposta2'];
 
     $pergunta3 = "Qual é sua data de nascimento?";

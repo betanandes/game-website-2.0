@@ -7,13 +7,8 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-session_start(); // Inicia a sessão
-
-// if (!isset($_SESSION['nome'])) {
-//     // Se o usuário não estiver logado, redireciona para a página de login
-//     header("Location: login.php");  // Redireciona para a página de login se não estiver logado
-//     exit();
-// }
+// Inicia a sessão
+session_start(); 
 
 ?>
 
@@ -43,18 +38,32 @@ session_start(); // Inicia a sessão
                         <a href="error/error.html">Novidades</a>
                     </li>
                     <li>
-                        <a href="error/error.html">Ofertas</a>
+                        <a href="#ofertas">Ofertas</a>
                     </li>
                     <li>
                         <a href="error/error.html">Assinaturas</a>
                     </li>
                     <li>
-                        <a href="error/error.html">Navegar</a>
+                        <a href="#contato">Contato</a>
+                    </li>
+                    <li>
+                        <a href="MER/mer.html">MER</a>
+                    </li>
+                    <li>
+                        <a href="LOG/log.html">LOG</a>
                     </li>
                 </ul>
                 <div class="nav-actions">
      
                     <input type="text" placeholder="Pesquisar jogos..." class="search-bar">
+
+                <!-- Ícone do carrinho -->
+                <div class="cart-icon">
+                    <a href="carrinho.php">
+                        <img src="assets/icons/cart.png" alt="Carrinho">
+                    <span id="cart-count">0</span> <!-- Quantidade de itens -->
+                    </a>
+                </div>                       
 
                 <?php if (isset($_SESSION['nome'])): ?> 
         
@@ -63,18 +72,16 @@ session_start(); // Inicia a sessão
                     <a href="logout.php">Sair</a>
     
                 <?php else: ?>
-                <!-- Mostra o botão de login -->
+                    
+
+                <!-- Mostra o botão de login e cadastro -->
                 <a href="login.php">
                     <button class="btn login">Login</button>
                 </a>
                 <a href="cadastro.php">
-                    <button class="btn cadastro">Cadastro</button>
+                    <button class="btn cadastro">Cadastre-se</button>
                 </a>
-                <?php endif; ?>
-
-                <!-- <a href="login.php">
-                    <button class="btn login">Login</button>
-                </a> -->
+                <?php endif; ?>             
   
                 </div>
                 <div class="hamburguer" id="hamburguer">
@@ -134,26 +141,26 @@ session_start(); // Inicia a sessão
 
 <!-- Catálogo de Jogos -->
 
-<section class="catalogo">
+<section class="catalogo" id="ofertas">
     <div id="catalogo-jogos" class="jogos-container">
         <div class="item" data-categoria="rpg">
             <img src="assets/produtos/ELDEN-RING.avif" alt="Jogo 1">
             <h3>Elden Ring</h3>
             <p>R$299,90</p>
-            <button class="btn comprar" onclick="">Comprar</button>
+            <button class="btn comprar" data-id="1" data-name="Elden Ring" data-price="299.90" onclick="">Comprar</button>
         </div>
         <div class="item" data-categoria="aventura">
             <img src="assets/produtos/Marvel's Spider-Man 2.avif" alt="Jogo 2">
             <h3>Marvel’s Spider-Man 2</h3>
             <p>R$349,90</p>
-            <button class="btn comprar">Comprar</button>
+            <button class="btn comprar" data-id="2" data-name="Marvel’s Spider-Man 2" data-price="349.90" onclick="">Comprar</button>
         </div>
 
         <div class="item" data-categoria="rpg">
             <img src="assets/produtos/Black Myth-Wukong.avif" alt="Jogo 3">
             <h3>Black Myth: Wukong</h3>
             <p>R$299,90</p>
-            <button class="btn comprar">Comprar</button>
+            <button class="btn comprar" data-id="3" data-name="Black Myth: Wukong" data-price="299.90" onclick="">Comprar</button>
         </div>
 
         <div class="item" data-categoria="terror">
@@ -267,6 +274,8 @@ session_start(); // Inicia a sessão
 
     <footer>
 
+    <section id ="contato"></section>
+
         <div class="footerLeft">
             <div class="footerMenu">
                 <h1 class="fMenuTitle">Sobre Nós</h1>
@@ -291,7 +300,7 @@ session_start(); // Inicia a sessão
                 <ul class="fList">
                     <li class="fListItem">Ação</li>
                     <li class="fListItem">Aventura</li>
-                    <li class="fListItem">Estratégia</li>
+                    <li class="fListItem">Luta</li>
                     <li class="fListItem">RPG</li>
                     <li class="fListItem">Terror</li>
           
@@ -318,7 +327,7 @@ session_start(); // Inicia a sessão
                 <p>&copy; 2024 GameX. Todos os direitos reservados aos alunos UNISUAM.</p>
             </div>
         </div>
-        
+    
     </footer>
 
 <button id="dark-mode-toggle">Dark Mode</button>

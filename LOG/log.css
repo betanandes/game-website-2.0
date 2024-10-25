@@ -1,0 +1,47 @@
+:root {
+    --pink-one: #EA638C;
+    --pink-two: #ff3399;
+    --purple-one: #660099;
+    --lavander: #AC80A0;
+    --dark: #333;
+}
+
+body {
+    background-color: var(--pink-one);
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.container img {
+    border-radius: 30px;
+}
+
+.botao {
+    padding: 10px 20px;
+    border: solid 1px var(--pink-one);
+    border-radius: 20px;
+    color: var(--pink-one);
+    background-color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 650px;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+}
+
+.botao:hover {
+    background-color: var(--pink-one);
+    color: white;
+    transform: scale(1.2);
+}

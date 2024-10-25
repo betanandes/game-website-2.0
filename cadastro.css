@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle, rgba(254,213,255,1) 18%, rgba(255,255,255,1) 100%);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+}
+
+body.dark-mode {
+    background: radial-gradient(circle, rgba(182,122,255,1) 18%, rgba(0,0,0,1) 100%);
+    color: white;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    z-index: 2;
+    display: block;
+}
+
+.bg-image {
+  width: 1140px;
+  height: 100px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+form {
+    background-color: #ffffff no-repeat center center;
+    padding: 40px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1200px;
+    height: 900px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+
+body.dark-mode form {
+    background-color: #333333;
+}
+
+.input-group {
+    display: flex;
+    gap: 20px;
+}
+
+.input-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 500;
+    color: #555;
+    margin-top: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 5px 0;
+    border: none;
+    border-bottom: 1px solid #d9d9d9;
+    background-color: transparent;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-bottom: 1px solid #ffd2ee;
+    outline: none;
+}
+
+button[type="submit"] {
+    background: linear-gradient(90deg, rgba(255,254,216,1) 0%, rgba(255,217,247,1) 100%);
+    border: none;
+    color: #333;
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(130deg, rgba(168,113,235,1) 0%, rgba(0,0,0,1) 47%, rgba(182,122,255,1) 100%);
+    transform: scale(1.05);
+    color: #fff;
+}
+
+button:active {
+    transform: scale(1);
+}
+
+form::before {
+    content: "";
+    background: url('assets/icons/bg-03.jpeg') no-repeat center center;
+    background-size: cover;
+    height: 150px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 20px;
+}
+
+  

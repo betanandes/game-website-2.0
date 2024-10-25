@@ -15,8 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cep = trim($_POST['cep']);
     $endereco_completo = trim($_POST['endereco_completo']);
     $login = trim($_POST['login']);
-    //$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Criptografia de senha
-    $senha = $_POST['senha']; // Criptografia de senha
+    $senha = $_POST['senha']; 
     $confirm_senha = $_POST['confirm_senha'];
 
     // Perguntas de segurança e suas respostas
@@ -29,44 +28,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Nome entre 15 e 80 caracteres alfabéticos
     if (strlen($nome) < 15 || strlen($nome) > 80 || !preg_match("/^[a-zA-Z\s]+$/", $nome)) {
-        $erros[] = "O nome deve conter entre 15 e 80 caracteres alfabéticos.";
+        $erros['nome'] = "O nome deve conter entre 15 e 80 caracteres alfabéticos.";
     }
 
     // Validação do CPF (implementação do dígito verificador)
     if (!validarCPF($cpf)) {
-        $erros[] = "CPF inválido.";
+        $erros['cpf'] = "CPF inválido.";
     }
 
     // Verificação do login com exatamente 6 caracteres alfabéticos
     if (strlen($login) != 6 || !preg_match("/^[a-zA-Z]+$/", $login)) {
-        $erros[] = "O login deve conter exatamente 6 caracteres alfabéticos.";
+        $erros['login'] = "O login deve conter exatamente 6 caracteres alfabéticos.";
     }
-
-    //Verificação da senha com exatamente 8 caracteres
-    // if (strlen($senha) != 8 || strlen($confirm_senha) != 8) {
-    //     $erros[] = "A senha e a confirmação de senha devem ter exatamente 8 caracterexs.";
-    // } elseif (!password_verify($confirm_senha, $senha)) {
-    //     $erros[] = "As senhas não coincidem.";
-    // } 
-
 
     //Verificação da senha com exatamente 8 caracteres
     if (strlen($senha) != 8 || strlen($confirm_senha) != 8) {
-        $erros[] = "A senha e a confirmação de senha devem ter exatamente 8 caracterexs.";
+        $erros['senha'] = "A senha e a confirmação de senha devem ter exatamente 8 caracterexs.";
     }elseif ($senha!==$confirm_senha){
-        $erros[] = "As senhas não coincidem.";
+        $erros['confirm_senha'] = "As senhas não coincidem.";
     } else {
         $senha_hash = password_hash($senha, PASSWORD_DEFAULT); // Criptografia da senha
     }
-
-
-
-    // if ($senha.length != 8 || $confirm_senha.length < 8) {
-    //     alert("As senhas devem ter pelo menos 8 caracteres.");
-    //     return false;
-    // }
-
-    // Verifica se a senha e confirmação são iguais
    
 
     // Verifica se o email já está registrado no banco
@@ -110,10 +92,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['mensagem'] = "Cadastro realizado com sucesso! Faça login para acessar.";
         header("Location: login.php");
         exit();
-    } else {
-        foreach ($erros as $erro) {
-            echo "<p style='color: red;'>$erro</p>";
-        }
     }
 }
 
@@ -138,70 +116,142 @@ function validarCPF($cpf) {
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastre-se</title>
+    <title>Crie sua conta</title>
     <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="cadastro.css">
 </head>
 <body>
-    <h1>Criar Usuário</h1>
 
-    <?php if (isset($_SESSION['erro'])): ?>
-        <p style="color: red;"><?= $_SESSION['erro']; unset($_SESSION['erro']); ?></p>
-    <?php endif; ?>
+
 
     <form method="POST" action="cadastro.php">
-         <label for="nome">Nome:</label>
-        <input type="text" name="nome" required><br>
 
-        <label for="data_nascimento">Data de Nascimento:</label>
-        <input type="date" name="data_nascimento" required><br>
+<div class="bg-image" color="#4a4a4a;">
+    <h1>Crie sua conta</h1>
+</div>
 
-        <label for="sexo">Sexo:</label>
-        <select name="sexo" required>
-            <option value="Masculino">Masculino</option>
-            <option value="Feminino">Feminino</option>
-        </select><br>
+    <div class="input-group">
+        <div class="input-box">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" required>
+            <?php if (isset($erros['nome'])): ?>
+                <p style="color: red;"><?= $erros['nome']; ?></p>
+            <?php endif; ?>
+        </div>
 
-        <label for="nome_materno">Nome Materno:</label>
-        <input type="text" name="nome_materno" required><br>
+        <div class="input-box">
+            <label for="data_nascimento">Data de Nascimento:</label>
+            <input type="date" name="data_nascimento">
+        </div>
+    </div>
 
-        <label for="cpf">CPF:</label>
-        <input type="text" name="cpf" required><br>
+    <div class="input-group">
+        <div class="input-box">    
+            <label for="sexo">Sexo:</label>
+            <select name="sexo">
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+            </select>
+        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
+        <div class="input-box">
+            <label for="nome_materno">Nome Materno:</label>
+            <input type="text" name="nome_materno">
+        </div>
+    </div>
 
-        <label for="telefone_celular">Telefone Celular:</label>
-        <input type="text" name="telefone_celular" placeholder="(+55)XX-XXXXXXXX" required><br>
+    <div class="input-group">
+        <div class="input-box"> 
+            <label for="cpf">CPF:</label>
+            <input type="text" name="cpf" required>
+            <?php if (isset($erros['cpf'])): ?>
+                <p style="color: red;"><?= $erros['cpf']; ?></p>
+            <?php endif; ?>
+        </div>    
 
-        <label for="telefone_fixo">Telefone Fixo:</label>
-        <input type="text" name="telefone_fixo" placeholder="(+55)XX-XXXXXXXX" required><br>
+        <div class="input-box"> 
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+            <?php if (isset($erros['email'])): ?>
+                <p style="color: red;"><?= $erros['email']; ?></p>
+            <?php endif; ?>
+        </div>
+    </div>    
 
-        <label for="cep">CEP:</label>
-        <input type="text" name="cep" required onblur="buscaCEP()"><br>
 
-        <label for="endereco_completo">Endereço Completo:</label>
-        <input type="text" name="endereco_completo" id="endereco_completo" required><br>
+    <div class="input-group">
+        <div class="input-box">   
+            <label for="telefone_celular">Telefone Celular:</label>
+            <input type="text" name="telefone_celular" placeholder="(+55)XX-XXXXXXXX">
+        </div>
 
-        <label for="login">Login:</label>
-        <input type="text" name="login" required><br>
+        <div class="input-box">   
+            <label for="telefone_fixo">Telefone Fixo:</label>
+            <input type="text" name="telefone_fixo" placeholder="(+55)XX-XXXXXXXX">
+        </div>
+    </div>
 
- <label for="senha">Senha:</label>
-        <input type="password" name="senha" required><br>
+   <div class="input-group">
+        <div class="input-box">      
+            <label for="cep">CEP:</label>
+            <input type="text" name="cep" required onblur="buscaCEP()">
+        </div>
 
-<label for="confirm_senha">Confirmação de Senha:</label>
-        <input type="password" name="confirm_senha" required><br>
+        <div class="input-box">
+            <label for="endereco_completo">Endereço Completo:</label>
+            <input type="text" name="endereco_completo" id="endereco_completo">
+        </div>
+   </div>
 
         
-        <label for="resposta1">Qual o nome de sua mãe?</label>
-        <input type="text" name="resposta1" required><br>
+   <div class="input-group">
+        <div class="input-box">
+            <label for="login">Login:</label>
+            <input type="text" name="login" required>
+            <?php if (isset($erros['login'])): ?>
+                <p style="color: red;"><?= $erros['login']; ?></p>
+            <?php endif; ?>
+        </div>
 
-        <label for="resposta2">Qual é o CEP?</label>
-        <input type="text" name="resposta2" required><br>
+        <div class="input-box">
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" required>
+            <?php if (isset($erros['senha'])): ?>
+                <p style="color: red;"><?= $erros['nome']; ?></p>
+            <?php endif; ?>
+        </div>
+    </div>
 
-        <label for="resposta3">Qual é sua data de nascimento?</label>
-        <input type="text" name="resposta3" required><br> 
+
+    <div class="input-group">
+        <div class="input-box">
+            <label for="confirm_senha">Confirmação de Senha:</label>
+            <input type="password" name="confirm_senha" required>
+            <?php if (isset($erros['confirm_senha'])): ?>
+                <p style="color: red;"><?= $erros['confirm_senha']; ?></p>
+            <?php endif; ?>
+        </div>
+    
+        <div class="input-box">
+            <label for="resposta1">Qual é o nome de sua mãe?</label>
+            <input type="text" name="resposta1" required>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <div class="input-box">    
+            <label for="resposta2">Qual é o CEP?</label>
+            <input type="text" name="resposta2" required>
+        </div>
+
+        <div class="input-box">
+            <label for="resposta3">Qual é sua data de nascimento?</label>
+            <input type="text" name="resposta3" required>
+        </div>
+    </div>
 
         <button type="submit">Cadastrar</button>
+   
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

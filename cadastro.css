@@ -8,12 +8,12 @@
 }
 
 body {
-    background: radial-gradient(circle, rgba(254,213,255,1) 18%, rgba(255,255,255,1) 100%);
+    background: #fff;
     color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150vh;
+    height: 100vh;
 }
 
 body.dark-mode {

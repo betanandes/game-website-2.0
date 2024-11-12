@@ -1,7 +1,7 @@
 <?php
 session_start(); // Inicia a sessão
 
-// Inicializa o contador de erros, se ainda não estiver definido
+// Inicializa o contador de erros, se ainda não estiver definido que coisa feia Roberta
 if (!isset($_SESSION['tentativas'])) {
     $_SESSION['tentativas'] = 0;
 }

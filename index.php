@@ -7,7 +7,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Inicia a sessão
+// Inicia a sessãooo
 session_start(); 
 
 ?>

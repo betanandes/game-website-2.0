@@ -4,6 +4,7 @@
     --purple-one: #660099;
     --lavander: #AC80A0;
     --dark: #333;
+    --white: #fff;
 
 }
 
@@ -197,6 +198,83 @@ nav {
     background-color: var(--pink-one);
 }
 
+/* Sessão de assinaturas */
+.servicos {
+    padding: 40px;
+    background-color: var(--pink-one);
+    color: #fff;
+    text-align: center;
+    border-radius: 15px; /* Cantos arredondados */
+    margin: 20px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.servicos .titulo {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    color: var(--white);
+}
+
+.planos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.plano {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.plano:hover {
+    transform: scale(1.05);
+}
+
+.plano h3 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    color: var(--dark); /* Título em tom escuro */
+}
+
+.preco {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 10px 0;
+    color: var(--purple-one); /* Cor do preço */
+}
+
+.plano ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.plano ul li {
+    margin: 10px 0;
+    font-size: 1em;
+    color: var(--dark);
+}
+
+.btn.assinar {
+    background-color: var(--pink-one);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn.assinar:hover {
+    background-color: var(--purple-one);
+}
 
 /* Seção de avaliações */
 .avaliacoes {
@@ -342,11 +420,6 @@ footer {
 }
 
 
-.fIcons {
-    /* display: flex; */
-    
-}
-
 .fIcon {
     width: 20px;
     height: 20px;
@@ -375,7 +448,7 @@ footer p {
 /* Dark Mode */
 body.dark-mode {
     background-color: #333;
-    color: #333;
+    /* color: #333; */
 }
 
 body.dark-mode header {
@@ -392,6 +465,23 @@ body.dark-mode .hamburguer {
 
 body.dark-mode .filtro-jogos {
     color: #f2f2f2;
+}
+
+body.dark-mode .servicos {
+    background-color: var(--dark);
+    color: white;
+}
+
+body.dark-mode .plano.basico {
+    color: var(--white);
+}
+
+body.dark-mode .btn.assinar {
+    background-color: var(--pink-two);
+}
+
+body.dark-mode .btn.assinar:hover {
+    background-color: var(--lavander);
 }
 
 body.dark-mode footer {

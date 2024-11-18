@@ -17,9 +17,10 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>GameX</title>
-    <link rel="stylesheet" href="home/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> 
     <!-- Serve para linkar o css do bootstrap mais facilmente. -->
 </head>
@@ -41,7 +42,7 @@ session_start();
                         <a href="#ofertas">Ofertas</a>
                     </li>
                     <li>
-                        <a href="error/error.html">Assinaturas</a>
+                        <a href="#servicos-assinatura">Assinaturas</a>
                     </li>
                     <li>
                         <a href="#contato">Contato</a>
@@ -58,12 +59,11 @@ session_start();
                     <input type="text" placeholder="Pesquisar jogos..." class="search-bar">
 
                 <!-- Ícone do carrinho -->
-                <div class="cart-icon">
+                <!-- <div class="cart-icon">
                     <a href="carrinho.php">
-                        <img src="assets/icons/cart.png" alt="Carrinho">
-                    <span id="cart-count">0</span> <!-- Quantidade de itens -->
+                    <i class="fa-solid fa-cart-shopping"></i>
                     </a>
-                </div>                       
+                </div>                        -->
 
                 <?php if (isset($_SESSION['nome'])): ?> 
         
@@ -228,6 +228,51 @@ session_start();
     </div>
         <!-- Adicione os outros jogos aqui -->
     </section>
+
+    <!-- Assinaturas -->
+
+    <section id="servicos-assinatura" class="servicos">
+    <h2 class="titulo">Serviços de Assinatura</h2>
+    <div class="planos">
+        <div class="plano basico">
+            <h3>Básico</h3>
+            <p class="preco">R$ 278,90/ano</p>
+            <ul>
+                <li><i class="fa-solid fa-gifts"></i> Jogos mensais</li>
+                <li><i class="fa-solid fa-users"></i> Modo multijogador online</li>
+                <li><i class="fa-solid fa-tags"></i> Descontos exclusivos</li>
+            </ul>
+            <button class="btn assinar" role="button">Assinar</button>
+        </div>
+        <div class="plano premium">
+            <h3>Premium</h3>
+            <p class="preco">R$ 475,90/ano</p>
+            <ul>
+                <li><i class="fa-solid fa-gifts"></i> Jogos mensais</li>
+                <li><i class="fa-solid fa-users"></i> Modo multijogador online</li>
+                <li><i class="fa-solid fa-tags"></i> Descontos exclusivos</li>
+                <li><i class="fa-solid fa-cloud"></i> Armazenamento em nuvem</li>
+                <li><i class="fa-solid fa-box-open"></i> Conteúdo exclusivo</li>
+            </ul>
+            <button class="btn assinar" role="button">Assinar</button>
+        </div>
+        <div class="plano supremo">
+            <h3>Supremo</h3>
+            <p class="preco">R$ 538,90/ano</p>
+            <ul>
+                <li><i class="fa-solid fa-gifts"></i> Jogos mensais</li>
+                <li><i class="fa-solid fa-users"></i> Modo multijogador online</li>
+                <li><i class="fa-solid fa-tags"></i> Descontos exclusivos</li>
+                <li><i class="fa-solid fa-cloud"></i> Armazenamento em nuvem</li>
+                <li><i class="fa-solid fa-box-open"></i> Conteúdo exclusivo</li>
+                <li><i class="fa-solid fa-images"></i> Catálogo de jogos</li>
+                <li><i class="fa-solid fa-gamepad"></i> Experimentação de jogos</li>
+            </ul>
+            <button class="btn assinar" role="button">Assinar</button>
+        </div>
+    </div>
+</section>
+
 
     <section class="avaliacoes">
         <h2>Avaliações da Loja</h2>

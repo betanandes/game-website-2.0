@@ -111,7 +111,7 @@ body.dark-mode .form {
     font-size: 14px;
 }
 
-.google button{
+/* .google button{
     margin-bottom: 20px;
     width: 320px;
     height: 52px;
@@ -194,7 +194,7 @@ body.dark-mode .form {
     align-items: center;
     font-size: 16px;
     font-weight: lighter;
-}
+} */
 
 .or{
     margin-top: 10px;
@@ -228,39 +228,30 @@ body.dark-mode .form {
 
 .entrar button{
 
-    margin-bottom: 25px;
-    width: 200px;
-    height: 30px;
-    border-radius: 10px;
-    margin-top: 10px;
-    border: 1px solid transparent;
-    box-shadow: 2px 2px #2d2d2d4a;
-    background: rgb(255,254,216);
-background: linear-gradient(90deg, rgba(255,254,216,1) 0%, rgba(255,217,247,1) 14%, rgba(255,217,247,1) 87%, rgba(255,254,216,1) 100%, rgba(255,254,216,1) 100%);
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    padding: 12px 50px;
+    border-radius: 5px;
+    border: none;
     cursor: pointer;
-    -webkit-transition: .5s ease;
-    transition: .5s ease;
-
+    font-size: 14px;
+    margin-top: 10px;
+    color: white;
+    background: rgb(255, 217, 247);
+    background: linear-gradient(90deg, rgba(255, 217, 247, 1) 0%, rgba(182, 122, 255, 1) 100%);
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 .entrar button:hover{
-
-    background: rgb(168,113,235);
-background: linear-gradient(130deg, rgba(168,113,235,1) 0%, rgba(0,0,0,1) 47%, rgba(182,122,255,1) 100%);
-    -webkit-transform: scale(1.1);
     transform: scale(1.1);
-
+    background: rgb(168,113,235);
+    background: linear-gradient(130deg, rgba(168,113,235,1) 0%, rgba(0,0,0,1) 47%, rgba(182,122,255,1) 100%);
 }
 
 
-.entrar a{
+/* .entrar a{
 
     font-family: 'Press Start 2P';
     color: #fff49f;
     text-decoration: none;
 
-}
+} */
 

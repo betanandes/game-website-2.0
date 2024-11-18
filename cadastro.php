@@ -122,8 +122,6 @@ function validarCPF($cpf) {
 </head>
 <body>
 
-
-
     <form method="POST" action="cadastro.php">
 
 <div class="bg-image" color="#4a4a4a;">

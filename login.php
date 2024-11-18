@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Entrar</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="login/css/style.css">
+     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -67,9 +67,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="header">
                 <div class="switch">
                     
-                    <h1>Login</h1>
+                    <h1>Entrar</h1>
                     
-                    <img id="theme-toggle" src="login/midia/light-mode-icon.gif" alt="Switch to dark mode">
+                    <img id="theme-toggle" src="midia/light-mode-icon.gif" alt="Switch to dark mode">
                 
                 </div>
             
@@ -94,14 +94,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="create">
 
+                <p><a href="alterar_senha.php">Esqueceu sua senha? Clique aqui para alterar.</a></p>
                 <p><a href="cadastro.php">Não possui um login? Cadastre-se!</a></p>
-
 
             </div>
 
             <div class="entrar">
 
-                <button><a href="#">INSERT COIN</a></button>
+                <button>Entrar</button>
 
             </div>
 
@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </div>
 
-    <script src="login/js/script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 </html>

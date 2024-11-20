@@ -50,25 +50,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Editar Produto</title>
+    <link rel="stylesheet" href="editar_produto.css">
+    <link rel="shortcut icon" href="./assets/gamex-favicon.png" type="image/x-icon">
+    <title>Editar Produtos</title>
 </head>
 <body>
-    <h1>Editar Produto</h1>
-    <form method="post">
-        <label>Nome:</label>
-        <input type="text" name="nome" value="<?= $produto['nome']; ?>" required><br>
-        
-        <label>Preço:</label>
-        <input type="number" step="0.01" name="preco" value="<?= $produto['preco']; ?>" required><br>
-        
-        <label>Imagem:</label>
-        <input type="text" name="imagem" value="<?= $produto['imagem']; ?>"><br>
-        
-        <label>Categoria:</label>
-        <input type="text" name="categoria" value="<?= $produto['categoria']; ?>" required><br>
-        
-        <button type="submit">Salvar</button>
-    </form>
+    <div class="container">
+        <h1>Editar Produto</h1>
+        <form method="post">
+            <label>Nome:</label>
+            <input type="text" name="nome" value="<?= $produto['nome']; ?>" required><br>
+
+            <label>Preço:</label>
+            <input type="number" step="0.01" name="preco" value="<?= $produto['preco']; ?>" required><br>
+
+            <label>Imagem:</label>
+            <input type="text" name="imagem" value="<?= $produto['imagem']; ?>"><br>
+
+            <label>Categoria:</label>
+            <input type="text" name="categoria" value="<?= $produto['categoria']; ?>" required><br>
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <!-- Botão de Voltar -->
+        <a href="consulta_produtos.php" class="btn-back">Voltar para a Consulta de Produtos</a>
+    </div>
 </body>
 </html>
+

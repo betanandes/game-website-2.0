@@ -26,3 +26,5 @@ document.getElementById('categoria-select').addEventListener('change', function 
         }
     });
 });
+
+

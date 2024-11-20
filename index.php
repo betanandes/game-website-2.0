@@ -60,39 +60,31 @@ session_start();
                     <li>
                         <a href="consulta_usuarios.php"><i class="fa-solid fa-gear"></i></a>
                     </li>
+
                     <?php endif; ?>
 
                 </ul>
-                <div class="nav-actions">
-     
-                    <input type="text" placeholder="Pesquisar jogos..." class="search-bar">
 
-                <!-- Ícone do carrinho -->
-                <!-- <div class="cart-icon">
-                    <a href="carrinho.php">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    </a>
-                </div>                        -->
+        <div class="nav-actions">
+            <form action="buscar_jogo.php" method="GET" id="search-form" class="search-form">
+                        <input type="text" placeholder="Pesquisar jogos..." id="search-bar" class="search-bar" name="query" required>
+                        <a href="error/error.html" class="search-link" style="color: white; font-weight: 600; text-decoration: none;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
 
-                <?php if (isset($_SESSION['nome'])): ?> 
-        
-                    <!-- Mostra o nome do usuário e botão de logout -->
-                    <p>Olá, <?= $_SESSION['nome']; ?>!</p>
-                    <a href="logout.php">Sair</a>
-    
-                <?php else: ?>
-                    
+            </form>
+            <?php if (isset($_SESSION['nome'])): ?> 
+                        <p class="user-greeting" style="color: white; font-family: 'Poppins'; font-weight: 600; text-decoration: none;">Olá, <?= htmlspecialchars($_SESSION['nome']); ?>!</p>
+                        <a href="logout.php" class="logout-link" style="color: white; font-weight: 600; text-decoration: none;">Sair</a>
+            <?php else: ?>
+                <div class="auth-buttons">
+                        <a href="login.php" class="btn login">Login</a>
+                        <a href="cadastro.php" class="btn cadastro">Cadastre-se</a>
+             </div>
+            <?php endif; ?>
+        </div>
 
-                <!-- Mostra o botão de login e cadastro -->
-                <a href="login.php">
-                    <button class="btn login">Login</button>
-                </a>
-                <a href="cadastro.php">
-                    <button class="btn cadastro">Cadastre-se</button>
-                </a>
-                <?php endif; ?>             
-  
-                </div>
+                
                 <div class="hamburguer" id="hamburguer">
                     ☰
                 </div>

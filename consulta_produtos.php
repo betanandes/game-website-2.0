@@ -17,10 +17,16 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="consulta_produtos.css">
+    <link rel="shortcut icon" href="./assets/gamex-favicon.png" type="image/x-icon">
     <title>Consulta Produtos</title>
 </head>
 <body>
-    <h1>Produtos</h1>
+
+    <h1>Lista de Produtos</h1>
+
+    <a href="index.php" class="btn-back">Voltar</a>
+
     <table border="1">
         <thead>
             <tr>

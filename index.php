@@ -47,12 +47,15 @@ session_start();
                     <li>
                         <a href="#contato">Contato</a>
                     </li>
+                    <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 'master'): ?>
                     <li>
                         <a href="MER/mer.html">MER</a>
                     </li>
                     <li>
                         <a href="LOG/log.html">LOG</a>
                     </li>
+                    <?php endif; ?>
+
                 </ul>
                 <div class="nav-actions">
      

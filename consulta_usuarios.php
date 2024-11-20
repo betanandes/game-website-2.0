@@ -51,19 +51,22 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($usuarios as $usuario): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($usuario['nome']) ?></td>
-                        <td><?= htmlspecialchars($usuario['email']) ?></td>
-                        <td>
-                            <form method="POST" action="excluir_usuario.php" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
-                                <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
-                                <button type="submit">Excluir</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
+    <?php foreach ($usuarios as $usuario): ?>
+        <tr>
+            <td><?= htmlspecialchars($usuario['nome']) ?></td>
+            <td><?= htmlspecialchars($usuario['email']) ?></td>
+            <td>
+                <!-- Link para editar o usuário -->
+                <a href="editar_usuario.php?id=<?= $usuario['id']; ?>" >Editar</a>
+                <form method="POST" action="excluir_usuario.php" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+                    <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
+                    <button type="submit">Excluir</button>
+                </form>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</tbody>
+
         </table>
     <?php else: ?>
         <p>Nenhum usuário encontrado.</p>

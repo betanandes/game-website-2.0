@@ -8,7 +8,6 @@
 }
 
 body {
-    transition: background-color 0.5s, color 0.5s;
     background: rgb(254,213,255);
     background: radial-gradient(circle, rgba(254,213,255,1) 18%, rgba(255,255,255,1) 100%);
     color: black;
@@ -17,34 +16,95 @@ body {
     justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
     padding: 20px;
 }
 
 .container {
     width: 100%;
-    max-width: 900px;
+    max-width: 600px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
     padding: 20px;
-    transition: background-color 0.5s ease;
 }
 
 h1 {
     text-align: center;
     color: #a870eb;
     font-weight: bold;
-    /* margin-bottom: 5px; */
 }
 
-.btn-back {
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #5e4b8b;
+}
+
+input[type="text"],
+input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border: 2px solid #a870eb;
+    outline: none;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(182, 122, 255, 1);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: rgb(168, 113, 235);
+    background: linear-gradient(130deg, rgba(168, 113, 235, 1) 0%, rgba(0, 0, 0, 1) 47%, rgba(182, 122, 255, 1) 100%);
+}
+
+a {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(182, 122, 255, 1);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+a:hover {
+    transform: scale(1.05);
+    background: rgb(168, 113, 235);
+    background: linear-gradient(130deg, rgba(168, 113, 235, 1) 0%, rgba(0, 0, 0, 1) 47%, rgba(182, 122, 255, 1) 100%);
+}
+
+/* Botão de Voltar */
+a.btn-back {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(90deg, rgba(255, 217, 247, 1) 0%, rgba(182, 122, 255, 1) 100%);
+    background: rgba(182, 122, 255, 1);
     color: white;
     text-decoration: none;
     font-size: 14px;
@@ -52,78 +112,8 @@ h1 {
     transition: transform 0.3s, background-color 0.3s;
 }
 
-.btn-back:hover {
+a.btn-back:hover {
     transform: scale(1.05);
     background: rgb(168, 113, 235);
     background: linear-gradient(130deg, rgba(168, 113, 235, 1) 0%, rgba(0, 0, 0, 1) 47%, rgba(182, 122, 255, 1) 100%);
-}
-
-
-h2 {
-    text-align: center;
-    color: #a870eb;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.table-container {
-    overflow-x: auto;
-    margin-top: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-table thead {
-    background: rgb(255, 217, 247);
-    background: linear-gradient(90deg, rgba(255, 217, 247, 1) 0%, rgba(182, 122, 255, 1) 100%);
-    color: white;
-}
-
-table th, table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-}
-
-table th {
-    text-align: center;
-    font-weight: 600;
-}
-
-table tbody tr:nth-child(even) {
-    background-color: #f4f4f4;
-}
-
-table tbody tr:hover {
-    background-color: #ffe6f3;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button {
-    padding: 10px 16px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    color: white;
-    background: rgb(255, 217, 247);
-    background: linear-gradient(90deg, rgba(255, 217, 247, 1) 0%, rgba(182, 122, 255, 1) 100%);
-    transition: transform 0.3s, background-color 0.3s;
-    display: inline-block;
-    margin-top: 20px;
-}
-
-button:hover {
-    transform: scale(1.1);
-    background: rgb(168,113,235);
-    background: linear-gradient(130deg, rgba(168,113,235,1) 0%, rgba(0,0,0,1) 47%, rgba(182,122,255,1) 100%);
 }

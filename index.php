@@ -54,6 +54,9 @@ session_start();
                     <li>
                         <a href="LOG/log.html">LOG</a>
                     </li>
+                    <li>
+                        <a href="consulta_usuarios.php"><i class="fa-solid fa-gear"></i></a>
+                    </li>
                     <?php endif; ?>
 
                 </ul>

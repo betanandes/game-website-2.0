@@ -197,7 +197,7 @@ function validarCPF($cpf) {
 
         <div class="input-box">
             <label for="endereco_completo">Endereço Completo:</label>
-            <input type="text" name="endereco_completo" id="endereco_completo">
+            <input type="text" name="endereco_completo" id="endereco_completo"> 
         </div>
    </div>
 

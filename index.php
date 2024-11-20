@@ -49,6 +49,9 @@ session_start();
                     </li>
                     <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 'master'): ?>
                     <li>
+                        <a href="consulta_produtos.php">Produtos</a>
+                    </li>
+                    <li>
                         <a href="MER/mer.html">MER</a>
                     </li>
                     <li>
@@ -135,105 +138,46 @@ session_start();
 
 <section class="filtro-jogos">
 <label for="categoria-select">Filtrar por:</label>
+
 <select id="categoria-select">
     <option value="todos">Todos</option>
-    <option value="acao">Ação</option>
-    <option value="aventura">Aventura</option>
-    <option value="luta">Luta</option>
-    <option value="rpg">RPG</option>
-    <option value="terror">Terror</option>
+    <?php
+    // Consulta para obter categorias únicas
+    $sql = "SELECT DISTINCT categoria FROM produtos";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($categorias as $categoria): ?>
+        <option value="<?= htmlspecialchars($categoria['categoria']) ?>">
+            <?= htmlspecialchars(ucfirst($categoria['categoria'])) ?>
+        </option>
+    <?php endforeach; ?>
 </select>
+
 </section>
 
 <!-- Catálogo de Jogos -->
 
 <section class="catalogo" id="ofertas">
     <div id="catalogo-jogos" class="jogos-container">
-        <div class="item" data-categoria="rpg">
-            <img src="assets/produtos/ELDEN-RING.avif" alt="Jogo 1">
-            <h3>Elden Ring</h3>
-            <p>R$299,90</p>
-            <button class="btn comprar" data-id="1" data-name="Elden Ring" data-price="299.90" onclick="">Comprar</button>
-        </div>
-        <div class="item" data-categoria="aventura">
-            <img src="assets/produtos/Marvel's Spider-Man 2.avif" alt="Jogo 2">
-            <h3>Marvel’s Spider-Man 2</h3>
-            <p>R$349,90</p>
-            <button class="btn comprar" data-id="2" data-name="Marvel’s Spider-Man 2" data-price="349.90" onclick="">Comprar</button>
-        </div>
+        <?php
+        require 'db.php'; // Inclua o arquivo de conexão com o banco
+        $sql = "SELECT * FROM produtos"; // Altere para o nome correto da sua tabela de produtos
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        <div class="item" data-categoria="rpg">
-            <img src="assets/produtos/Black Myth-Wukong.avif" alt="Jogo 3">
-            <h3>Black Myth: Wukong</h3>
-            <p>R$299,90</p>
-            <button class="btn comprar" data-id="3" data-name="Black Myth: Wukong" data-price="299.90" onclick="">Comprar</button>
-        </div>
-
-        <div class="item" data-categoria="terror">
-            <img src="assets/produtos/Resident Evil Village.jpeg" alt="Jogo 4">
-            <h3>Resident Evil Village </h3>
-            <p>R$184,50</p>
-            <button class="btn comprar">Comprar</button>
-        </div>
-
-        <div class="item" data-categoria="luta">
-            <img src="assets/produtos/DRAGON BALL.avif" alt="Jogo 5">
-            <h3>Dragon Ball</h3>
-            <p>R$349,90</p>
-            <button class="btn comprar">Comprar</button>
-        </div>
-
-        <div class="item" data-categoria="terror">
-            <img src="assets/produtos/Dead by Daylight.webp" alt="Jogo 6">
-            <h3>Dead by Daylight</h3>
-            <p>R$149,50</p>
-            <button class="btn comprar">Comprar</button>
-        </div>
-
-        <div class="item" data-categoria="aventura">
-            <img src="assets/produtos/God of War Ragnarök.jpeg" alt="Jogo 7">
-            <h3>God of War Ragnarök</h3>
-            <p>R$349,90</p>
-            <button class="btn comprar">Comprar</button>
-        </div>
-
-        <div class="item" data-categoria="acao">
-            <img src="assets/produtos/Cyberpunk 2077.webp" alt="Jogo 8">
-            <h3>Cyberpunk 2077</h3>
-            <p>R$249,50</p>
-            <button class="btn comprar">Comprar</button>
-        </div>
-        
-        <div class="item" data-categoria="rpg">
-            <img src="assets/produtos/Hogwarts Legacy.webp" alt="Jogo 9">
-            <h3>Hogwarts Legacy</h3>
-            <p>R$249,90</p>
-            <button class="btn comprar">Comprar</button>
-        </div>
-
-        <div class="item" data-categoria="luta">
-            <img src="assets/produtos/Mortal Kombat1.avif" alt="Jogo 10">
-            <h3>Mortal Kombat 1</h3>
-            <p>R$249,99</p>
-            <button class="btn comprar">Comprar</button>
-        </div>
-
-        <div class="item" data-categoria="luta">
-            <img src="assets/produtos/NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS.avif" alt="Jogo 11">
-            <h3>Naruto X Boruto</h3>
-            <p>R$149,95</p>
-            <button class="btn comprar">Comprar</button>
-        </div>
-
-        <div class="item" data-categoria="aventura">
-            <img src="assets/produtos/The Last of Us™ Part II.avif" alt="Jogo 12">
-            <h3>The Last of Us Part II</h3>
-            <p>R$199,50</p>
-            <button class="btn comprar">Comprar</button>
-        </div>
+        foreach ($produtos as $produto): ?>
+            <div class="item" data-categoria="<?= htmlspecialchars($produto['categoria']) ?>">
+                <img src="<?= htmlspecialchars($produto['imagem']) ?>" alt="<?= htmlspecialchars($produto['nome']) ?>">
+                <h3><?= htmlspecialchars($produto['nome']) ?></h3>
+                <p>R$<?= number_format($produto['preco'], 2, ',', '.') ?></p>
+                <button class="btn comprar" data-id="<?= $produto['id'] ?>" data-name="<?= htmlspecialchars($produto['nome']) ?>" data-price="<?= $produto['preco'] ?>">Comprar</button>
+            </div>
+        <?php endforeach; ?>
     </div>
-        <!-- Adicione os outros jogos aqui -->
-    </section>
+</section>
 
     <!-- Assinaturas -->
 

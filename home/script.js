@@ -12,19 +12,17 @@ hamburguer.addEventListener('click', () => {
 });
 
 // Função para filtrar os jogos
-document.getElementById('categoria-select').addEventListener('change', function() {
-    const categoriaSelecionada = this.value; // Categoria selecionada no filtro
-    const cards = document.querySelectorAll('.item'); // Todos os cards de jogos
+document.getElementById('categoria-select').addEventListener('change', function () {
+    const categoriaSelecionada = this.value;
+    const itens = document.querySelectorAll('.jogos-container .item');
 
-    // Loop através de todos os cards para filtrar
-    cards.forEach(function(card) {
-        const categoriaDoJogo = card.getAttribute('data-categoria'); // Categoria do jogo
+    itens.forEach(item => {
+        const categoria = item.getAttribute('data-categoria');
 
-        // Mostra ou oculta o card com base na categoria selecionada
-        if (categoriaSelecionada === 'todos' || categoriaDoJogo === categoriaSelecionada) {
-            card.style.display = 'block'; // Mostra o card se a categoria for correspondente ou "todos"
+        if (categoriaSelecionada === 'todos' || categoria === categoriaSelecionada) {
+            item.style.display = 'block';
         } else {
-            card.style.display = 'none'; // Oculta o card se não corresponder à categoria
+            item.style.display = 'none';
         }
     });
 });

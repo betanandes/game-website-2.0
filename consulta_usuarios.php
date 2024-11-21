@@ -23,7 +23,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="consulta_usuarios.css">
+    <link rel="stylesheet" href="consulta_produtos.css">
     <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
     <title>Consulta de Usuários</title>
 </head>
@@ -42,7 +42,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h2>Lista de Usuários</h2>
 
     <?php if ($usuarios): ?>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>Nome</th>

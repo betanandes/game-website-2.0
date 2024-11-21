@@ -121,146 +121,159 @@ function validarCPF($cpf) {
     <link rel="stylesheet" href="cadastro.css">
 </head>
 <body>
+    <form method="POST" action="cadastro.php" id="formCadastro">
 
-    <form method="POST" action="cadastro.php">
-
-<div class="bg-image" color="#4a4a4a;">
-    <h1>Crie sua conta</h1>
-</div>
-
-    <div class="input-group">
-        <div class="input-box">
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome" required>
-            <?php if (isset($erros['nome'])): ?>
-                <p style="color: red;"><?= $erros['nome']; ?></p>
-            <?php endif; ?>
+        <div class="bg-image" color="#4a4a4a;">
+            <h1>Crie sua conta</h1>
         </div>
 
-        <div class="input-box">
-            <label for="data_nascimento">Data de Nascimento:</label>
-            <input type="date" name="data_nascimento">
-        </div>
-    </div>
+        <div class="input-group">
+            <div class="input-box">
+                <label for="nome">Nome:</label>
+                <input type="text" minlength="15" maxlength="80"  name="nome" required>
+                <?php if (isset($erros['nome'])): ?>
+                    <p style="color: red;"><?= $erros['nome']; ?></p>
+                <?php endif; ?>
+            </div>
 
-    <div class="input-group">
-        <div class="input-box">    
-            <label for="sexo">Sexo:</label>
-            <select name="sexo">
-                <option value="Masculino">Masculino</option>
-                <option value="Feminino">Feminino</option>
-            </select>
+            <div class="input-box">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" name="data_nascimento">
+            </div>
         </div>
 
-        <div class="input-box">
-            <label for="nome_materno">Nome Materno:</label>
-            <input type="text" name="nome_materno">
-        </div>
-    </div>
+        <div class="input-group">
+            <div class="input-box">    
+                <label for="sexo">Sexo:</label>
+                <select name="sexo">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+            </div>
 
-    <div class="input-group">
-        <div class="input-box"> 
-            <label for="cpf">CPF:</label>
-            <input type="text" name="cpf" required>
-            <?php if (isset($erros['cpf'])): ?>
-                <p style="color: red;"><?= $erros['cpf']; ?></p>
-            <?php endif; ?>
+            <div class="input-box">
+                <label for="nome_materno">Nome Materno:</label>
+                <input type="text" name="nome_materno">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-box"> 
+                <label for="cpf">CPF:</label>
+                <input type="text" name="cpf" required>
+                <?php if (isset($erros['cpf'])): ?>
+                    <p style="color: red;"><?= $erros['cpf']; ?></p>
+                <?php endif; ?>
+            </div>    
+
+            <div class="input-box"> 
+                <label for="email">Email:</label>
+                <input type="email" name="email" required>
+                <?php if (isset($erros['email'])): ?>
+                    <p style="color: red;"><?= $erros['email']; ?></p>
+                <?php endif; ?>
+            </div>
         </div>    
 
-        <div class="input-box"> 
-            <label for="email">Email:</label>
-            <input type="email" name="email" required>
-            <?php if (isset($erros['email'])): ?>
-                <p style="color: red;"><?= $erros['email']; ?></p>
-            <?php endif; ?>
-        </div>
-    </div>    
+        <div class="input-group">
+            <div class="input-box">   
+                <label for="telefone_celular">Telefone Celular:</label>
+                <input type="text" name="telefone_celular" placeholder="(+55)XX-XXXXXXXX">
+            </div>
 
-
-    <div class="input-group">
-        <div class="input-box">   
-            <label for="telefone_celular">Telefone Celular:</label>
-            <input type="text" name="telefone_celular" placeholder="(+55)XX-XXXXXXXX">
+            <div class="input-box">   
+                <label for="telefone_fixo">Telefone Fixo:</label>
+                <input type="text" name="telefone_fixo" placeholder="(+55)XX-XXXXXXXX">
+            </div>
         </div>
 
-        <div class="input-box">   
-            <label for="telefone_fixo">Telefone Fixo:</label>
-            <input type="text" name="telefone_fixo" placeholder="(+55)XX-XXXXXXXX">
-        </div>
-    </div>
+        <div class="input-group">
+            <div class="input-box">      
+                <label for="cep">CEP:</label>
+                <input type="text" name="cep" required onblur="buscaCEP()">
+            </div>
 
-   <div class="input-group">
-        <div class="input-box">      
-            <label for="cep">CEP:</label>
-            <input type="text" name="cep" required onblur="buscaCEP()">
+            <div class="input-box">
+                <label for="endereco_completo">Endereço Completo:</label>
+                <input type="text" name="endereco_completo" id="endereco_completo"> 
+            </div>
         </div>
 
-        <div class="input-box">
-            <label for="endereco_completo">Endereço Completo:</label>
-            <input type="text" name="endereco_completo" id="endereco_completo"> 
-        </div>
-   </div>
+        <div class="input-group">
+            <div class="input-box">
+                <label for="login">Login:</label>
+                <input type="text" maxlength="6" name="login" required>
+                <?php if (isset($erros['login'])): ?>
+                    <p style="color: red;"><?= $erros['login']; ?></p>
+                <?php endif; ?>
+            </div>
 
+            <div class="input-box">
+                <label for="senha">Senha:</label>
+                <input type="password" maxlength="8" name="senha" required>
+                <?php if (isset($erros['senha'])): ?>
+                    <p style="color: red;"><?= $erros['senha']; ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-box">
+                <label for="confirm_senha">Confirmação de Senha:</label>
+                <input type="password" name="confirm_senha" required>
+                <?php if (isset($erros['confirm_senha'])): ?>
+                    <p style="color: red;"><?= $erros['confirm_senha']; ?></p>
+                <?php endif; ?>
+            </div>
         
-   <div class="input-group">
-        <div class="input-box">
-            <label for="login">Login:</label>
-            <input type="text" name="login" required>
-            <?php if (isset($erros['login'])): ?>
-                <p style="color: red;"><?= $erros['login']; ?></p>
-            <?php endif; ?>
+            <div class="input-box">
+                <label for="resposta1">Qual é o nome de sua mãe?</label>
+                <input type="text" name="resposta1" required>
+            </div>
         </div>
 
-        <div class="input-box">
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" required>
-            <?php if (isset($erros['senha'])): ?>
-                <p style="color: red;"><?= $erros['nome']; ?></p>
-            <?php endif; ?>
-        </div>
-    </div>
+        <div class="input-group">
+            <div class="input-box">    
+                <label for="resposta2">Qual é o CEP?</label>
+                <input type="text" name="resposta2" required>
+            </div>
 
-
-    <div class="input-group">
-        <div class="input-box">
-            <label for="confirm_senha">Confirmação de Senha:</label>
-            <input type="password" name="confirm_senha" required>
-            <?php if (isset($erros['confirm_senha'])): ?>
-                <p style="color: red;"><?= $erros['confirm_senha']; ?></p>
-            <?php endif; ?>
-        </div>
-    
-        <div class="input-box">
-            <label for="resposta1">Qual é o nome de sua mãe?</label>
-            <input type="text" name="resposta1" required>
-        </div>
-    </div>
-
-    <div class="input-group">
-        <div class="input-box">    
-            <label for="resposta2">Qual é o CEP?</label>
-            <input type="text" name="resposta2" required>
+            <div class="input-box">
+                <label for="resposta3">Qual é sua data de nascimento?</label>
+                <input type="text" name="resposta3" required>
+            </div>
         </div>
 
-        <div class="input-box">
-            <label for="resposta3">Qual é sua data de nascimento?</label>
-            <input type="text" name="resposta3" required>
+        <div class="button-group">
+            <button type="submit">Cadastrar</button>
+            <button type="button" onclick="limparCampos()">Limpar</button>
         </div>
-    </div>
-
-        <button type="submit">Cadastrar</button>
-   
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+        // Função para buscar o CEP
         function buscaCEP() {
             var cep = document.querySelector("input[name='cep']").value;
             axios.get('https://viacep.com.br/ws/' + cep + '/json/')
             .then(function(response) {
-                document.getElementById("endereco_completo").value = response.data.logradouro + ", " + response.data.bairro + ", " + response.data.localidade + " - " + response.data.uf;
+                if (response.data.erro) {
+                    alert("CEP não encontrado.");
+                } else {
+                    document.getElementById("endereco_completo").value = response.data.logradouro + ", " + response.data.bairro + ", " + response.data.localidade + " - " + response.data.uf;
+                }
+            })
+            .catch(function(error) {
+                alert("Erro ao buscar CEP.");
             });
+        }
+
+        // Função para limpar todos os campos
+        function limparCampos() {
+            const form = document.getElementById('formCadastro');
+            form.reset();
         }
     </script>
 </body>
 </html>
+

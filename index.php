@@ -27,7 +27,7 @@ session_start();
 <body>
 
     <!-- Navbar -->
-
+ HELLO
     <header>
         <nav>
             <div class="logo">

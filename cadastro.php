@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Verificação da senha com exatamente 8 caracteres
     if (strlen($senha) != 8 || strlen($confirm_senha) != 8) {
-        $erros['senha'] = "A senha e a confirmação de senha devem ter exatamente 8 caracterexs.";
+        $erros['senha'] = "A senha e a confirmação de senha devem ter exatamente 8 caracteres.";
     }elseif ($senha!==$confirm_senha){
         $erros['confirm_senha'] = "As senhas não coincidem.";
     } else {

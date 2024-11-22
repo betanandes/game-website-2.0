@@ -13,34 +13,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // Verifica se o usuário existe e se a senha está correta
-    if ($usuario && password_verify($senha, $usuario['senha'])) {
-        // Armazena o email, nome e o tipo de usuário na sessão
-        $_SESSION['email_2fa'] = $email;
-        $_SESSION['nome'] = $usuario['nome']; // Armazenando o nome do usuário
-        $_SESSION['tipo_usuario'] = $usuario['tipo_usuario']; // Armazenando o tipo de usuário (master ou comum)
-        
-        $_SESSION['perguntas'] = [
-            ['pergunta' => $usuario['pergunta1'], 'resposta' => $usuario['resposta1']],
-            ['pergunta' => $usuario['pergunta2'], 'resposta' => $usuario['resposta2']],
-            ['pergunta' => $usuario['pergunta3'], 'resposta' => $usuario['resposta3']],
-        ];
+if ($usuario && password_verify($senha, $usuario['senha'])) {
+    // Armazena o email, nome e o tipo de usuário na sessão
+    $_SESSION['email_2fa'] = $email;
+    $_SESSION['nome'] = $usuario['nome']; // Armazenando o nome do usuário
+    $_SESSION['tipo_usuario'] = $usuario['tipo_usuario']; // Armazenando o tipo de usuário (master ou comum)
+    
+    $_SESSION['perguntas'] = [
+        ['pergunta' => $usuario['pergunta1'], 'resposta' => $usuario['resposta1']],
+        ['pergunta' => $usuario['pergunta2'], 'resposta' => $usuario['resposta2']],
+        ['pergunta' => $usuario['pergunta3'], 'resposta' => $usuario['resposta3']],
+    ];
 
-        // Escolhe uma pergunta aleatória para 2FA
-        $pergunta_escolhida = $_SESSION['perguntas'][array_rand($_SESSION['perguntas'])];
-        $_SESSION['pergunta_selecionada'] = $pergunta_escolhida;
+    // Escolhe uma pergunta aleatória para 2FA
+    $pergunta_escolhida = $_SESSION['perguntas'][array_rand($_SESSION['perguntas'])];
+    $_SESSION['pergunta_selecionada'] = $pergunta_escolhida;
 
-        // Verifica o tipo de usuário e redireciona conforme necessário
-        if ($_SESSION['tipo_usuario'] == 'master') {
-            // Redireciona para a página do administrador (ou outra página para master)
-            header("Location: index.php");
-        } else {
-            // Redireciona para a página principal para usuários comuns
-            header("Location: 2fa.php");
-        }
-        exit();
-    } else {
-        $erro = "Email ou senha incorretos!";
+    // Função para registrar log
+    function registrarLog($pdo, $usuario_id, $acao, $detalhes = null) {
+        $sql = "INSERT INTO logs (usuario_id, acao, detalhes) VALUES (:usuario_id, :acao, :detalhes)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'usuario_id' => $usuario_id,
+            'acao' => $acao,
+            'detalhes' => $detalhes
+        ]);
     }
+
+    // Registra o log de login bem-sucedido
+    registrarLog($pdo, $usuario['id'], 'Login realizado', 'Usuário logou com sucesso.');
+
+    // Verifica o tipo de usuário e redireciona conforme necessário
+    if ($_SESSION['tipo_usuario'] == 'master') {
+        // Redireciona para a página do administrador (ou outra página para master)
+        header("Location: index.php");
+    } else {
+        // Redireciona para a página principal para usuários comuns
+        header("Location: 2fa.php");
+    }
+    exit();
+} else {
+    $erro = "Email ou senha incorretos!";
+}
+
 }
 
 ?>
@@ -108,7 +123,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="entrar">
 
-                <button>Entrar</button>
+                <button>Entrar</button><br>
+                <a href="index.php">Voltar à página inicial</p>
 
             </div>
 

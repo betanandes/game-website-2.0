@@ -62,7 +62,7 @@ input[type="email"]:focus {
 }
 
 button {
-    padding: 12px 20px;
+    padding: 10px 17px;
     border: none;
     border-radius: 5px;
     background: rgba(182, 122, 255, 1);
@@ -101,7 +101,7 @@ a:hover {
 a.btn-back {
     display: inline-block;
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 8px 20px;
     border: none;
     border-radius: 5px;
     background: rgba(182, 122, 255, 1);

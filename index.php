@@ -34,7 +34,7 @@ session_start();
                 <img src="assets/gamex-logo-original2.png" alt="">
             </div>
             <div class="nav-container">
-                <ul id="nav-links" class="nav-links">
+                <ul id="nav-links" class="nav-links" style="margin-top: 10px; ">
                     <li>
                         <a href="error/error.html">Novidades</a>
                     </li>
@@ -60,7 +60,7 @@ session_start();
                         <a href="MER/mer.html">MER</a>
                     </li>
                     <li>
-                        <a href="LOG/log.html">LOG</a>
+                        <a href="log.php">LOG</a>
                     </li>
 
                     <?php endif; ?>

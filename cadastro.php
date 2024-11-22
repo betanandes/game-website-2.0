@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Verificação da senha com exatamente 8 caracteres
     if (strlen($senha) != 8 || strlen($confirm_senha) != 8) {
-        $erros['senha'] = "A senha e a confirmação de senha devem ter exatamente 8 caracterexs.";
+        $erros['senha'] = "A senha e a confirmação de senha devem ter exatamente 8 caracteres.";
     }elseif ($senha!==$confirm_senha){
         $erros['confirm_senha'] = "As senhas não coincidem.";
     } else {
@@ -248,6 +248,14 @@ function validarCPF($cpf) {
             <button type="submit">Cadastrar</button>
             <button type="button" onclick="limparCampos()">Limpar</button>
         </div>
+<<<<<<< HEAD
+    </div>
+
+        <button type="submit">Cadastrar</button>
+        <a href="index.php">Página inicial</a>
+   
+=======
+>>>>>>> 25563be653c2ebce8d3d39ba5182bb7a724f5b17
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

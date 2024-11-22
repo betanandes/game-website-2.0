@@ -60,7 +60,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a href="editar_usuario.php?id=<?= $usuario['id']; ?>" >Editar</a>
                 <form method="POST" action="excluir_usuario.php" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
                     <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
-                    <button type="submit">Excluir</button>
+                    <button style="color: purple; background-color: red; padding: 12px;" type="submit">Excluir</button>
                 </form>
             </td>
         </tr>

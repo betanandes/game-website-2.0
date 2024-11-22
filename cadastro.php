@@ -249,6 +249,7 @@ function validarCPF($cpf) {
     </div>
 
         <button type="submit">Cadastrar</button>
+        <a href="index.php">Página inicial</a>
    
     </form>
 

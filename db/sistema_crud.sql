@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Tempo de geração: 20/11/2024 às 23:33
+-- Host: 127.0.0.1
+-- Tempo de geração: 22/11/2024 às 02:00
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -46,6 +46,27 @@ CREATE TABLE `itens_carrinho` (
   `produto_id` int(11) DEFAULT NULL,
   `quantidade` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `logs`
+--
+
+CREATE TABLE `logs` (
+  `id` int(11) NOT NULL,
+  `usuario_id` int(11) DEFAULT NULL,
+  `acao` varchar(255) NOT NULL,
+  `detalhes` text DEFAULT NULL,
+  `data_hora` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `logs`
+--
+
+INSERT INTO `logs` (`id`, `usuario_id`, `acao`, `detalhes`, `data_hora`) VALUES
+(1, 1, 'Login realizado', 'Usuário logou com sucesso.', '2024-11-21 19:17:52');
 
 -- --------------------------------------------------------
 
@@ -118,7 +139,6 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `pergunta1`, `resposta1`
 (4, 'Jean', 'teste3@email.com', '$2y$10$c6002Ug6L7mE6fJxT7G8K.aEnswIbO4dJHtq/zPPec2qptKeXXLJG', NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'comum'),
 (5, 'tigrinho', 'teste4@email.com', '$2y$10$cBtaNvDg5WuPEE2IsPOsCeEe7u1fjra7VrNyKP3Q8wu/uGOpUgFyq', NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'comum'),
 (6, 'tigrinho', 'teste4@email.com', '$2y$10$xRAgmp26r/RPz6eFgbJqjexgBtH0GS.ne4tgBFOqGZGgvNKLmOSsK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'comum'),
-(7, 'aaa', 'teste5@email.com', '$2y$10$tIfGFQYiM05.YJKHKPLzSO7ri4LZhKDy8i3wx2dAX/Nb5rLiQ61ly', NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'comum'),
 (8, 'Roberta Fernandes', 'teste6@email.com', '$2y$10$EDBUFtUJhVQOfTcx1cdaWO5/YQPNqz6Sf./DGFCdMT0IRdgCiOhV2', NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'comum'),
 (9, 'aaa', 'teste7@email.com', '$2y$10$LBW.er381VrF7yuK8g/yRu71xLjhgh04opNaPi1tH2ClyPNrSaXGS', NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'comum'),
 (10, 'bolinho', 'teste8@email.com', '$2y$10$qsO6l1kg9.Pi79FvJIdnbeOYpksz5K5N/XOD1kBgbVpZiSBGMPq/y', NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'comum'),
@@ -128,7 +148,8 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `pergunta1`, `resposta1`
 (14, 'bolinho', 'teste12@email.com', '$2y$10$ptUklHdaJJgiCjKEG4Qwvutjc3HonQnh24QQhMUuomgDz363VjAle', 'Qual o nome de sua mãe?', 'bolo', 'rj', 'Em que cidade você nasceu?', 'Qual é sua data de nascimento?', '20/03/2000', '2024-10-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'comum'),
 (17, 'Xxxxx Fernandes Oliveira Felippe', 'robertafernandes46@gmail.com', '$2y$10$e7mTs2fCZC2HecQsLQf7rePfMUKDusTr5YORVd5XkRnPfQq7R/RCa', 'Qual o nome de sua mãe?', 'Osilda de Cassia Fernandes', '21031-620', 'Qual é o seu CEP?', 'Qual é sua data de nascimento?', '20/03/2000', '2024-10-24', 'Masculino', 'Roberta Fernandes Oliveira Felippe', 2147483647, 2147483647, 2147483647, 21031, 'Rua Pereira Landim, Ramos, Rio de Janeiro - RJ', 'zozoey', 'comum'),
 (18, 'Xaaabb Fernandes Oliveira Felippe', 'robertafernaxxxs46@gmail.com', '$2y$10$9m6RuW4M/64KXRipZflxduireELJrIFicDtDAW8HVEiFrNHo5G.PK', 'Qual o nome de sua mãe?', 'Osilda de Cassia Fernandes', '21031-620', 'Qual é o seu CEP?', 'Qual é sua data de nascimento?', '20/03/2000', '2024-10-01', 'Masculino', 'Roberta Fernandes Oliveira Felippe', 2147483647, 2147483647, 2147483647, 21031, 'Rua Pereira Landim, Ramos, Rio de Janeiro - RJ', 'zozoey', 'comum'),
-(19, 'Lunaaaaaaaaaaaa', 'teste1@gmail.com', '$2y$10$Ycx9LM2OpwsjFO1zBIeiVeoacyVz980iCDZnMKx1s/jkoHetEKcx.', 'Qual o nome de sua mãe?', 'bolo', '21031-620', 'Qual é o seu CEP?', 'Qual é sua data de nascimento?', '20/03/2000', '2000-03-20', 'Feminino', 'bolinho', 2147483647, 2147483647, 2147483647, 21031620, 'Rua Pereira Landim, Ramos, Rio de Janeiro - RJ', 'zozoey', 'comum');
+(19, 'Lunaaaaaaaaaaaa', 'teste1@gmail.com', '$2y$10$Ycx9LM2OpwsjFO1zBIeiVeoacyVz980iCDZnMKx1s/jkoHetEKcx.', 'Qual o nome de sua mãe?', 'bolo', '21031-620', 'Qual é o seu CEP?', 'Qual é sua data de nascimento?', '20/03/2000', '2000-03-20', 'Feminino', 'bolinho', 2147483647, 2147483647, 2147483647, 21031620, 'Rua Pereira Landim, Ramos, Rio de Janeiro - RJ', 'zozoey', 'comum'),
+(20, 'YHURI DA SILVA CONCEICAO GADELHA', 'gadelhayhuri@gmail.com', '$2y$10$zpp8o6GdQ33moKUH3Qa9J.w6RJsMBEUFodrvnzE967D/zssNqY/42', 'Qual o nome de sua mãe?', 'margarete', '21381000', 'Qual é o seu CEP?', 'Qual é sua data de nascimento?', '07/07/1997', '1997-07-07', 'Masculino', 'margarete', 177448, 2147483647, 2122909316, 21381000, 'Rua Felipe Mena, Tomás Coelho, Rio de Janeiro - RJ', 'yhurig', 'comum');
 
 --
 -- Índices para tabelas despejadas
@@ -148,6 +169,13 @@ ALTER TABLE `itens_carrinho`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_carrinho` (`carrinho_id`),
   ADD KEY `fk_produto` (`produto_id`);
+
+--
+-- Índices de tabela `logs`
+--
+ALTER TABLE `logs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Índices de tabela `produtos`
@@ -178,6 +206,12 @@ ALTER TABLE `itens_carrinho`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `logs`
+--
+ALTER TABLE `logs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -187,7 +221,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restrições para tabelas despejadas
@@ -205,6 +239,12 @@ ALTER TABLE `carrinho`
 ALTER TABLE `itens_carrinho`
   ADD CONSTRAINT `fk_carrinho` FOREIGN KEY (`carrinho_id`) REFERENCES `carrinho` (`id`),
   ADD CONSTRAINT `fk_produto` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`);
+
+--
+-- Restrições para tabelas `logs`
+--
+ALTER TABLE `logs`
+  ADD CONSTRAINT `logs_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

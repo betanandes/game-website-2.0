@@ -60,7 +60,7 @@ session_start();
                         <a href="MER/mer.html">MER</a>
                     </li>
                     <li>
-                        <a href="LOG/log.html">LOG</a>
+                        <a href="log.php">LOG</a>
                     </li>
 
                     <?php endif; ?>

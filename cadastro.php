@@ -248,6 +248,14 @@ function validarCPF($cpf) {
             <button type="submit">Cadastrar</button>
             <button type="button" onclick="limparCampos()">Limpar</button>
         </div>
+<<<<<<< HEAD
+    </div>
+
+        <button type="submit">Cadastrar</button>
+        <a href="index.php">Página inicial</a>
+   
+=======
+>>>>>>> 25563be653c2ebce8d3d39ba5182bb7a724f5b17
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

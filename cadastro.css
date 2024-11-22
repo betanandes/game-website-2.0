@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); /* Fonte estilo retrô */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 
 * {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    background: linear-gradient(to bottom, #fde2e4, #d7c7f5); /* Rosa e roxo pastel */
+    background: linear-gradient(to bottom, #fde2e4, #d7c7f5); 
     color: #fff;
     display: flex;
     justify-content: center;
@@ -22,25 +22,24 @@ h1 {
     text-align: center;
     margin-bottom: 30px;
     line-height: 1.2;
-    color: #d5a6d4; /* Roxo pastel */
-    text-shadow: 2px 2px #b39ddb; /* Sombras suaves */
+    color: #d5a6d4; 
+    text-shadow: 2px 2px #b39ddb; 
     display: block;
 }
 
 .bg-image {
-    width: 100%; /* Ocupa toda a largura */
-    height: 200px; /* Altura fixa, ajuste conforme necessário */
-    background-image: url('assets/supermario-bg-pastel.jpg'); /* Fundo adaptado para tons pastéis */
+    width: 100%; 
+    height: 200px; 
+    background-image: url('assets/supermario-bg-pastel.jpg'); 
     background-repeat: no-repeat;
-    background-size: cover; /* Garante que a imagem cubra todo o espaço */
-    background-position: center; /* Centraliza a imagem */
-    border-radius: 8px; /* Bordas arredondadas */
-    margin-bottom: 30px;
+    background-size: cover; 
+    background-position: center; 
+    border-radius: 8px; 
 }
 
 form {
-    background: rgba(255, 240, 245, 0.9); /* Fundo rosa pastel claro */
-    border: 4px solid #d3c0f3; /* Contorno roxo pastel */
+    background: rgba(255, 240, 245, 0.9); 
+    border: 4px solid #d3c0f3; 
     padding: 40px;
     border-radius: 8px;
     width: 100%;
@@ -67,7 +66,7 @@ form {
 
 label {
     font-weight: bold;
-    color: #836fa9; /* Roxo suave */
+    color: #836fa9; 
     margin-top: 5px;
 }
 
@@ -78,9 +77,9 @@ input[type="password"],
 select {
     width: 100%;
     padding: 10px;
-    border: 2px solid #dab3e3; /* Contorno pastel */
+    border: 2px solid #dab3e3; 
     border-radius: 8px;
-    background-color: #fffafc; /* Fundo branco levemente rosado */
+    background-color: #fffafc; 
     font-size: 14px;
     color: #333;
     transition: border-color 0.3s;
@@ -91,14 +90,14 @@ input[type="email"]:focus,
 input[type="date"]:focus,
 input[type="password"]:focus,
 select:focus {
-    border-color: #b39ddb; /* Destaque suave no foco */
+    border-color: #b39ddb; 
     outline: none;
-    background-color: #f3e5f5; /* Fundo leve roxo claro */
+    background-color: #f3e5f5; 
 }
 
 button[type="submit"],
 button[type="button"] {
-    background: linear-gradient(90deg, #dab3e3, #f4d7f8); /* Gradiente pastel */
+    background: linear-gradient(90deg, #dab3e3, #f4d7f8); 
     border: none;
     color: #333;
     font-weight: bold;
@@ -112,7 +111,7 @@ button[type="button"] {
 
 button[type="submit"]:hover,
 button[type="button"]:hover {
-    background: linear-gradient(130deg, #c5a1d8, #e3c6f5); /* Destaque pastel */
+    background: linear-gradient(130deg, #c5a1d8, #e3c6f5); 
     transform: scale(1.1);
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -131,8 +130,8 @@ form::before {
     z-index: -1;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background: url('assets/pink-bg-mario.jpg') no-repeat center center; /* Nuvenzinhas com tons pastéis */
+    background: url('assets/pink-bg-mario.jpg') no-repeat center center;
     background-size: cover;
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.3); /* Sobreposição branca com 30% de opacidade */
+    background-color: rgba(255, 255, 255, 0.3); 
 }

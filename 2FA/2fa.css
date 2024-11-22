@@ -5,7 +5,7 @@
 }
 
 body {
-    background: radial-gradient(circle, rgba(203,255,206,1) 0%, rgba(255,255,255,1) 56%, rgba(66,255,239,1) 90%);
+    background: radial-gradient(circle, rgba(255, 200, 221, 1) 0%, rgba(255, 235, 242, 1) 56%, rgba(255, 174, 203, 1) 90%);
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
@@ -16,7 +16,7 @@ body {
 
 h1 {
     font-size: 2.5rem;
-    color: #333;
+    color: #5a3a45; 
     margin-bottom: 20px;
     text-align: center;
 }
@@ -50,20 +50,20 @@ form {
 input[type="text"] {
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid #f5a1b3;
     border-radius: 8px;
     outline: none;
     transition: border-color 0.3s;
 }
 
 input[type="text"]:focus {
-    border-color: #42ffef;
+    border-color: #ff91a7;
 }
 
 button {
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #42ffef;
+    background-color: #ff91a7;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -72,15 +72,15 @@ button {
 }
 
 button:hover {
-    background-color: #00c8b0;
+    background-color: #ff7692;
 }
 
 p {
     font-size: 1rem;
-    color: #555;
+    color: #6e3b49; 
 }
 
 .error {
-    color: red;
+    color: #d9534f;
     margin-bottom: 10px;
 }

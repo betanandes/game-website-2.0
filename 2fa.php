@@ -73,7 +73,7 @@ if ($_SESSION['tentativas'] < 2) {
         <h1>Verificação de Pergunta de Segurança</h1>
         <div class="imagem">
             
-            <img src="2FA/midia/image-hatsunemiku.gif" alt="Hatsune Miku">
+            <img src="2FA/midia/Madoka-gif-2FA.gif" alt="Madoka">
         
         </div>
     

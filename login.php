@@ -41,14 +41,11 @@ if ($usuario && password_verify($senha, $usuario['senha'])) {
     }
 
     // Registra o log de login bem-sucedido
-    registrarLog($pdo, $usuario['id'], 'Login realizado', 'Usuário logou com sucesso.');
+    registrarLog($pdo, $usuario['id'], 'Tentativa login', 'Usuário logou com sucesso.');
 
     // Verifica o tipo de usuário e redireciona conforme necessário
-    if ($_SESSION['tipo_usuario'] == 'master') {
+    if ($_SESSION['tipo_usuario']) {
         // Redireciona para a página do administrador (ou outra página para master)
-        header("Location: index.php");
-    } else {
-        // Redireciona para a página principal para usuários comuns
         header("Location: 2fa.php");
     }
     exit();
@@ -124,7 +121,6 @@ if ($usuario && password_verify($senha, $usuario['senha'])) {
             <div class="entrar">
 
                 <button>Entrar</button><br>
-                <a href="index.php">Voltar à página inicial</p>
 
             </div>
 

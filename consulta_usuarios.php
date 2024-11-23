@@ -23,7 +23,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="consulta_produtos.css">
+    <link rel="stylesheet" href="consulta_usuarios.css">
     <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
     <title>Consulta de Usuários</title>
 </head>
@@ -42,7 +42,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h2>Lista de Usuários</h2>
 
     <?php if ($usuarios): ?>
-        <table border="1">
+        <table>
             <thead>
                 <tr>
                     <th>Nome</th>
@@ -51,22 +51,20 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </tr>
             </thead>
             <tbody>
-    <?php foreach ($usuarios as $usuario): ?>
-        <tr>
-            <td><?= htmlspecialchars($usuario['nome']) ?></td>
-            <td><?= htmlspecialchars($usuario['email']) ?></td>
-            <td>
-                <!-- Link para editar o usuário -->
-                <a href="editar_usuario.php?id=<?= $usuario['id']; ?>" >Editar</a>
-                <form method="POST" action="excluir_usuario.php" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
-                    <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
-                    <button style="color: purple; background-color: red; padding: 12px;" type="submit">Excluir</button>
-                </form>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-</tbody>
-
+                <?php foreach ($usuarios as $usuario): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($usuario['nome']) ?></td>
+                        <td><?= htmlspecialchars($usuario['email']) ?></td>
+                        <td>
+                            <form method="POST" action="excluir_usuario.php" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+                                <a href="editar_usuario.php?id=<?= $usuario['id']; ?>" >Editar</a>
+                                <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
+                                <button type="submit">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     <?php else: ?>
         <p>Nenhum usuário encontrado.</p>

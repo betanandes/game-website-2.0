@@ -64,6 +64,7 @@ if ($_SESSION['tentativas'] < 2) {
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="2FA/2fa.css">
+    <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
     <title>2FA</title>
 </head>
 <body>

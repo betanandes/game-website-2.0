@@ -29,12 +29,14 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Logs de Autenticação</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
         * {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             background: rgb(254,213,255);
             background: radial-gradient(circle, rgba(254,213,255,1) 18%, rgba(255,255,255,1) 100%);
@@ -45,12 +47,14 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             min-height: 100vh;
             padding: 20px;
         }
+
         h1 {
             text-align: center;
             color: #a870eb;
             font-weight: bold;
             margin-top: 5px;
         }
+
         .container {
             width: 100%;
             max-width: 900px;
@@ -60,12 +64,14 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             padding: 20px;
             margin-top: 20px;
         }
+
         form {
             margin-bottom: 20px;
             display: flex;
             justify-content: center;
             gap: 10px;
         }
+
         form input[type="text"] {
             padding: 10px;
             width: 300px;
@@ -73,10 +79,12 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             border-radius: 5px;
             font-size: 16px;
         }
+
         form input[type="text"]:focus {
             border: 2px solid #a870eb;
             outline: none;
         }
+
         form button {
             padding: 10px 20px;
             border: none;
@@ -88,10 +96,12 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             cursor: pointer;
             transition: transform 0.3s, background-color 0.3s;
         }
+
         form button:hover {
             transform: scale(1.05);
             background: linear-gradient(130deg, rgba(168, 113, 235, 1) 0%, rgba(0, 0, 0, 1) 47%, rgba(182, 122, 255, 1) 100%);
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -101,22 +111,27 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
         }
+
         table thead {
             background: rgba(182, 122, 255, 1);
             color: white;
             text-transform: uppercase;
         }
+
         table th, table td {
             padding: 12px 15px;
             text-align: left;
             border: 1px solid #ddd;
         }
+
         table tbody tr:nth-child(even) {
             background: #f9f9f9;
         }
+
         table tbody tr:hover {
             background: rgba(182, 122, 255, 0.1);
         }
+
         a.btn-back {
             display: inline-block;
             padding: 10px 20px;
@@ -128,6 +143,7 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             font-weight: bold;
             transition: transform 0.3s, background-color 0.3s;
         }
+
         a.btn-back:hover {
             transform: scale(1.05);
             background: linear-gradient(130deg, rgba(168, 113, 235, 1) 0%, rgba(0, 0, 0, 1) 47%, rgba(182, 122, 255, 1) 100%);
@@ -135,33 +151,56 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </style>
 </head>
 <body>
-    <h1>Logs de Autenticação</h1>
     <div class="container">
-        <form action="logs.php" method="GET">
+        <h1>Logs de Autenticação</h1>
+        <form method="GET">
             <input type="text" name="pesquisa" placeholder="Pesquisar por nome, CPF ou ação" value="<?= htmlspecialchars($pesquisa) ?>">
             <button type="submit">Pesquisar</button>
         </form>
         <table>
             <thead>
                 <tr>
-                    <th>Data</th>
+                    <th>Data e Hora</th>
                     <th>Usuário</th>
+                    <th>CPF</th>
                     <th>Ação</th>
-                    <th>Status 2FA</th>
+                    <th>2FA Status</th>
+                    <th>Detalhes</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($logs as $log): ?>
-                    <tr>
-                        <td><?= date('d/m/Y H:i', strtotime($log['data_hora'])) ?></td>
-                        <td><?= htmlspecialchars($log['usuario_nome']) ?> (<?= htmlspecialchars($log['usuario_cpf']) ?>)</td>
-                        <td><?= htmlspecialchars($log['acao']) ?></td>
-                        <td><?= ($log['2fa_status'] == '1') ? 'Passou' : 'Não passou' ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
+    <?php if ($logs): ?>
+        <?php foreach ($logs as $log): ?>
+            <tr>
+                <td><?= htmlspecialchars($log['data_hora']) ?></td>
+                <td><?= htmlspecialchars($log['usuario_nome'] ?? 'Sistema') ?></td>
+                <td><?= htmlspecialchars($log['usuario_cpf'] ?? 'Não disponível') ?></td>
+                <td><?= htmlspecialchars($log['acao']) ?></td>
+                <td><?= ($log['2fa_status'] == '1') ? 'Passou' : 'Não passou' ?></td>
+<td>
+    <?php
+    // Verifica se o usuário passou ou não pela 2FA
+    if ($log['2fa_status'] == '0') {
+        // Se o 2FA falhou, exibe mensagem de falha no login
+        echo 'Usuário não logou com sucesso.';
+    } else {
+        // Caso tenha passado pela 2FA, exibe os detalhes do log
+        echo htmlspecialchars($log['detalhes']) ?: 'Detalhes não disponíveis';
+    }
+    ?>
+</td>
+
+            </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="6">Nenhum log encontrado.</td>
+        </tr>
+    <?php endif; ?>
+</tbody>
+
         </table>
-        <a class="btn-back" href="index.php">Voltar para a Home</a>
+        <a href="index.php" class="btn-back">Voltar</a>
     </div>
 </body>
 </html>

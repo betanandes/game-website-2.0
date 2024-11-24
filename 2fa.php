@@ -1,24 +1,17 @@
 <?php
-session_start(); // Inicia a sessão
+session_start(); 
+
+require 'db.php';
+require 'functions.php';
 
 // Inicializa o contador de erros, se ainda não estiver definido
 if (!isset($_SESSION['tentativas'])) {
     $_SESSION['tentativas'] = 0;
 }
 
-// Função para selecionar uma nova pergunta aleatória
-function selecionarPerguntaAleatoria() {
-    if (isset($_SESSION['perguntas']) && !empty($_SESSION['perguntas'])) {
-        return $_SESSION['perguntas'][array_rand($_SESSION['perguntas'])];
-    } else {
-        header("Location: login.php"); // Redireciona se não houver perguntas
-        exit();
-    }
-}
-
 // Verifica se a pergunta foi selecionada
 if (!isset($_SESSION['pergunta_selecionada'])) {
-    $_SESSION['pergunta_selecionada'] = selecionarPerguntaAleatoria();
+    $_SESSION['pergunta_selecionada'] = selecionarPerguntaAleatoria();  // Agora vem de functions.php
 }
 
 // Lógica principal de verificação e controle de tentativas
@@ -28,13 +21,16 @@ if ($_SESSION['tentativas'] < 2) {
 
         // Verifica se a resposta inserida é a mesma da pergunta escolhida
         if (strtolower($resposta_digitada) == strtolower($_SESSION['pergunta_selecionada']['resposta'])) {
-            // Autenticação bem-sucedida
-            // $_SESSION['nome'] = $_SESSION['email_2fa'];
-
             // Limpa as sessões temporárias e reseta o contador de tentativas
             unset($_SESSION['pergunta_selecionada']);
             unset($_SESSION['perguntas']);
             $_SESSION['tentativas'] = 0;
+
+            // Use $_SESSION para pegar o ID do usuário após o login
+            $usuario_id = $_SESSION['usuario_id'];  // Armazenar o ID do usuário na sessão após o login
+
+            // Registra o log com sucesso no 2FA
+            registrarLog($pdo, $usuario_id, 'Tentativa login', 'Usuário logou com sucesso.', 1);
 
             // Redireciona para a página principal
             header("Location: index.php");
@@ -45,7 +41,10 @@ if ($_SESSION['tentativas'] < 2) {
             $erro = "Resposta incorreta! Tentativa {$_SESSION['tentativas']} de 3.";
 
             // Seleciona uma nova pergunta aleatória
-            $_SESSION['pergunta_selecionada'] = selecionarPerguntaAleatoria();
+            $_SESSION['pergunta_selecionada'] = selecionarPerguntaAleatoria();  // Agora vem de functions.php
+
+            // Registra o log de falha no 2FA
+            registrarLog($pdo, $_SESSION['usuario_id'], 'Tentativa login', 'Resposta incorreta na verificação 2FA.');
         }
     }
 } else {
@@ -53,11 +52,15 @@ if ($_SESSION['tentativas'] < 2) {
     unset($_SESSION['pergunta_selecionada']);
     unset($_SESSION['perguntas']);
     $_SESSION['tentativas'] = 0; // Reseta tentativas para o próximo login
+
+    // Registra o log de falha por número de tentativas excedido
+    registrarLog($pdo, $_SESSION['usuario_id'], 'Tentativa login', 'Número máximo de tentativas excedido.');
+
     header("Location: login.php");
     exit();
 }
 ?>
-    
+
 
 <!DOCTYPE html>
 <html lang="pt-br">

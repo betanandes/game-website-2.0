@@ -8,130 +8,116 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #fde2e4, #d7c7f5); 
-    color: #fff;
+    background: rgb(254,213,255);
+    background: radial-gradient(circle, rgba(254,213,255,1) 18%, rgba(255,255,255,1) 100%);
+    color: black;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    height: 150vh;
-}
-
-h1 {
-    font-size: 28px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 30px;
-    line-height: 1.2;
-    color: #836fa9; 
-    text-shadow: 2px 2px #b39ddb; 
-    display: block;
-}
-
-.bg-image {
-    width: 100%; 
-    height: 200px; 
-    background-image: url('assets/supermario-bg-pastel.jpg'); 
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: center; 
-    border-radius: 8px; 
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
 }
 
 form {
-    background: rgba(255, 240, 245, 0.9); 
-    border: 4px solid #d3c0f3; 
-    padding: 40px;
-    border-radius: 8px;
     width: 100%;
-    max-width: 1200px;
-    height: auto;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
     transition: background-color 0.5s ease;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    position: relative;
+}
+
+h1 {
+    text-align: center;
+    color: #a870eb;
+    font-weight: bold;
 }
 
 .input-group {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .input-box {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    min-width: 200px;
 }
 
 label {
+    font-size: 14px;
     font-weight: bold;
-    color: #836fa9; 
-    margin-top: 5px;
+    color: #5e4b8b;
+    display: block;
+    margin-bottom: 5px;
 }
 
 input[type="text"],
+input[type="number"],
 input[type="email"],
 input[type="date"],
 input[type="password"],
 select {
     width: 100%;
     padding: 10px;
-    border: 2px solid #dab3e3; 
-    border-radius: 8px;
-    background-color: #fffafc; 
-    font-size: 14px;
-    color: #333;
-    transition: border-color 0.3s;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="date"]:focus,
-input[type="password"]:focus,
+input:focus,
 select:focus {
-    border-color: #b39ddb; 
+    border: 2px solid #a870eb;
     outline: none;
-    background-color: #f3e5f5; 
 }
 
-button[type="submit"],
-button[type="button"] {
-    background: linear-gradient(90deg, #dab3e3, #f4d7f8); 
+button {
+    padding: 12px 20px;
     border: none;
-    color: #fff;
+    border-radius: 5px;
+    background: rgba(182, 122, 255, 1);
+    color: white;
+    font-size: 16px;
     font-weight: bold;
-    padding: 15px;
-    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
-    text-transform: uppercase;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
-button[type="submit"]:hover,
+button:hover {
+    transform: scale(1.05);
+    background: rgb(168, 113, 235);
+    background: linear-gradient(130deg, rgba(168, 113, 235, 1) 0%, rgba(0, 0, 0, 1) 47%, rgba(182, 122, 255, 1) 100%);
+}
+
+button:focus {
+    outline: none;
+}
+
+p {
+    margin-top: 5px;
+    font-size: 12px;
+    color: red;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+button[type="button"] {
+    background-color: #ccc;
+    color: black;
+}
+
 button[type="button"]:hover {
-    background: linear-gradient(130deg, #c5a1d8, #e3c6f5); 
-    transform: scale(1.1);
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-button:active {
-    transform: scale(1);
-}
-
-form::before {
-    content: "";
-    height: 150px;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    background: url('assets/pink-bg-mario.jpg') no-repeat center center;
-    background-size: cover;
-    margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.3); 
+    background-color: #bbb;
+    transform: scale(1.05);
 }

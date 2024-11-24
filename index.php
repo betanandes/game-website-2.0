@@ -101,15 +101,15 @@ session_start();
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
-                    <img src="assets/banner/stone.png" class="w-100" alt="">
+                    <img src="assets/banner/stone.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
                 </div>
 
                 <div class="carousel-item">
-                    <img src="assets/banner/stardew.png" class="w-100" alt="">
+                    <img src="assets/banner/stardew.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
                 </div>
                 
                 <div class="carousel-item">
-                    <img src="assets/banner/gta.png" class="w-100" alt="">
+                    <img src="assets/banner/gta.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
             </div>
 
 </div>

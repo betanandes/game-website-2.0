@@ -15,11 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verifica se o usuário existe e se a senha está correta
     if ($usuario && password_verify($senha, $usuario['senha'])) {
-        // Armazena o e-mail, nome, tipo de usuário e id na sessão
-        $_SESSION['email_2fa'] = $email;
-        $_SESSION['nome'] = $usuario['nome']; 
-        $_SESSION['tipo_usuario'] = $usuario['tipo_usuario']; 
-        $_SESSION['usuario_id'] = $usuario['id']; // Armazena o ID do usuário na sessão
+
+            $_SESSION['login'] = $usuario['login']; 
+            $_SESSION['email_2fa'] = $email;
+            $_SESSION['nome'] = $usuario['nome']; 
+            $_SESSION['tipo_usuario'] = $usuario['tipo_usuario']; 
+            $_SESSION['usuario_id'] = $usuario['id'];
 
         // Escolhe uma pergunta aleatória para 2FA
         $_SESSION['perguntas'] = [

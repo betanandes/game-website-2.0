@@ -47,7 +47,7 @@ nav {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    gap: 20px;
     margin-top: 5px;
     margin-left: 35px;
 }
@@ -127,16 +127,27 @@ nav {
     color: white;
 }
 
+#cart-button {
+    background-color: var(--purple-one) !important;
+    color: white !important;
+    border: none;
+}
+
+.btn-custom {
+    background-color: var(--purple-one) !important;
+    color: white !important;
+    border: none;
+}
+
+
 .hamburguer {
     display: none;
     color: var(--purple-one);
     font-size: 20px;
     cursor: pointer;
-    z-index: 100; /* Traz o hambúrguer para frente */
+    z-index: 100; 
     position: relative; /* Certifica que o z-index será aplicado */
 }
-
-/* Estilização do filtro */
 
 .filtro-jogos {
     margin: 20px 0;

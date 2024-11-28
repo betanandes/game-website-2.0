@@ -33,7 +33,7 @@ session_start();
                 <img src="assets/gamex-logo-original2.png" alt="">
             </div>
             <div class="nav-container">
-                <ul id="nav-links" class="nav-links" style="margin-top: 10px; ">
+                <ul id="nav-links" class="nav-links" style="margin-top: 10px; margin-right: 40px;">
                     <li>
                         <a href="error/error.html">Novidades</a>
                     </li>
@@ -63,29 +63,36 @@ session_start();
                     </li>
 
                     <?php endif; ?>
-
                 </ul>
 
-        <div class="nav-actions">
-            <form action="buscar_jogo.php" method="GET" id="search-form" class="search-form">
-                        <input type="text" placeholder="Pesquisar jogos..." id="search-bar" class="search-bar" name="query" required>
+                <div class="nav-actions">
+                    <form action="buscar_jogo.php" method="GET" id="search-form" class="search-form">
+                        <input type="text" placeholder="Pesquisar jogos..." id="search-bar" class="search-bar" name="query" required style="margin-right: 10px;">
                         <a href="error/error.html" class="search-link" style="color: white; font-weight: 600; text-decoration: none;">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         </a>
-
-            </form>
-            <?php if (isset($_SESSION['nome'])): ?> 
-                        <p class="user-greeting" style="color: white; font-family: 'Poppins'; font-weight: 600; text-decoration: none;">Olá, <?= htmlspecialchars($_SESSION['nome']); ?>!</p>
-                        <a href="logout.php" class="logout-link" style="color: white; font-weight: 600; text-decoration: none;">Sair</a>
-            <?php else: ?>
-                <div class="auth-buttons">
-                        <a href="login.php" class="btn login">Login</a>
-                        <a href="cadastro.php" class="btn cadastro">Cadastre-se</a>
-             </div>
-            <?php endif; ?>
-        </div>
-
+                    </form>
+                    <?php if (isset($_SESSION['nome'])): ?> 
+                        <p class="user-greeting" style="color: white; font-family: 'Poppins'; font-weight: 600; text-decoration: none; margin-left: 30px">Olá, <?= htmlspecialchars($_SESSION['nome']); ?>!</p>
+                        <a href="logout.php" class="logout-link" style="color: white; font-weight: 500; text-decoration: none; margin-right: 30px;">Sair</a>
+                    <?php else: ?>
+                        <div class="auth-buttons">
+                            <a href="login.php" class="btn login">Login</a>
+                            <a href="cadastro.php" class="btn cadastro">Cadastre-se</a>
+                        </div>
+                    <?php endif; ?>
+                </div>
                 
+                <!-- Carrinho -->
+                <div class="cart-container">
+                    <button class="btn btn-primary position-relative" id="cart-button">
+                        <i class="fas fa-shopping-cart"></i> Carrinho
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">
+                            0
+                        </span>
+                    </button>
+                </div>
+
                 <div class="hamburguer" id="hamburguer">
                     ☰
                 </div>
@@ -93,36 +100,57 @@ session_start();
         </nav>
     </header>
 
-       <!-- Carrossel -->
-
-       <div class="carousel slide" id="carouselDemo" data-bs-wrap="true" data-bs-ride="carousel" data-bs-interval="2000">
-
-            <div class="carousel-inner">
-
-                <div class="carousel-item active">
-                    <img src="assets/banner/stone.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
+    <!--Modal Carrinho -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Seu Carrinho</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
-                <div class="carousel-item">
-                    <img src="assets/banner/horizon.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
+                <div class="modal-body">
+                    <ul class="list-group" id="cart-items">
+                        <li class="list-group-item">Seu carrinho está vazio.</li>
+                    </ul>
                 </div>
-                
-                <div class="carousel-item">
-                    <img src="assets/banner/assassins.webp" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-custom">Finalizar Compra</button>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Carrossel -->
+
+    <div class="carousel slide" id="carouselDemo" data-bs-wrap="true" data-bs-ride="carousel" data-bs-interval="2000">
+
+<div class="carousel-inner">
+
+    <div class="carousel-item active">
+        <img src="assets/banner/stone.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
+    </div>
+
+    <div class="carousel-item">
+        <img src="assets/banner/horizon.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
+    </div>
+    
+    <div class="carousel-item">
+        <img src="assets/banner/assassins.webp" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
+</div>
 
 </div>
 
-        <button class="carousel-control-prev" 
-        type="button"
-        data-bs-target="#carouselDemo" data-bs-slide="prev">
-            <span class="carosel-control-prev-icon"></span>
-        </button>
+<button class="carousel-control-prev" 
+type="button"
+data-bs-target="#carouselDemo" data-bs-slide="prev">
+<span class="carosel-control-prev-icon"></span>
+</button>
 
-        <button class="carousel-control-next" type="button"
-        data-bs-target="#carouselDemo" data-bs-slide="next">
-            <span class="carosel-control-next-icon"></span>
-        </button>
+<button class="carousel-control-next" type="button"
+data-bs-target="#carouselDemo" data-bs-slide="next">
+<span class="carosel-control-next-icon"></span>
+</button>
 
 
 </div>
@@ -150,31 +178,29 @@ session_start();
 
 </section>
 
-<!-- Catálogo de Jogos -->
+    <!-- Catálogo de Jogos -->
+    <section class="catalogo" id="ofertas">
+        <div id="catalogo-jogos" class="jogos-container">
+            <?php
+            $sql = "SELECT * FROM produtos"; 
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-<section class="catalogo" id="ofertas">
-    <div id="catalogo-jogos" class="jogos-container">
-        <?php
-        require 'db.php'; 
-        $sql = "SELECT * FROM produtos"; 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-        $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($produtos as $produto): ?>
+                <div class="item" data-categoria="<?= htmlspecialchars($produto['categoria']) ?>">
+                    <img src="<?= htmlspecialchars($produto['imagem']) ?>" alt="<?= htmlspecialchars($produto['nome']) ?>">
+                    <h3><?= htmlspecialchars($produto['nome']) ?></h3>
+                    <p>R$<?= number_format($produto['preco'], 2, ',', '.') ?></p>
+                    <button class="btn comprar" data-id="<?= $produto['id'] ?>" data-name="<?= htmlspecialchars($produto['nome']) ?>" data-price="<?= $produto['preco'] ?>">Comprar</button>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
 
-        foreach ($produtos as $produto): ?>
-            <div class="item" data-categoria="<?= htmlspecialchars($produto['categoria']) ?>">
-                <img src="<?= htmlspecialchars($produto['imagem']) ?>" alt="<?= htmlspecialchars($produto['nome']) ?>">
-                <h3><?= htmlspecialchars($produto['nome']) ?></h3>
-                <p>R$<?= number_format($produto['preco'], 2, ',', '.') ?></p>
-                <button class="btn comprar" data-id="<?= $produto['id'] ?>" data-name="<?= htmlspecialchars($produto['nome']) ?>" data-price="<?= $produto['preco'] ?>">Comprar</button>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</section>
+        <!-- Assinaturas -->
 
-    <!-- Assinaturas -->
-
-    <section id="servicos-assinatura" class="servicos">
+        <section id="servicos-assinatura" class="servicos">
     <h2 class="titulo">Serviços de Assinatura</h2>
     <div class="planos">
         <div class="plano basico">
@@ -216,9 +242,8 @@ session_start();
     </div>
 </section>
 
-
 <!-- Avaliações -->
-    <section class="avaliacoes">
+<section class="avaliacoes">
         <h2>Avaliações da Loja</h2>
     
         <div id="comments" class="comments-flex">
@@ -318,9 +343,69 @@ session_start();
     
     </footer>
 
-<button id="dark-mode-toggle">Dark Mode</button>
+    <button id="dark-mode-toggle">Dark Mode</button>
 
-<script src="home/script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="home/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script do Carrinho -->
+    <script>
+        let cart = [];
+        const cartButton = document.getElementById('cart-button');
+        const cartItems = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+
+        function updateCart() {
+            cartItems.innerHTML = '';
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<li class="list-group-item">Seu carrinho está vazio.</li>';
+            } else {
+                cart.forEach((item, index) => {
+                    cartItems.innerHTML += `
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            ${item.name} - R$${item.price.toFixed(2)}
+                            <div>
+                                <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">-</button>
+                                <span class="mx-2">${item.quantity}</span>
+                                <button class="btn btn-sm btn-success" onclick="addToCart(${item.id}, '${item.name}', ${item.price})">+</button>
+                            </div>
+                        </li>`;
+                });
+            }
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+        }
+
+        function addToCart(id, name, price) {
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cart[index].quantity -= 1;
+            if (cart[index].quantity === 0) {
+                cart.splice(index, 1);
+            }
+            updateCart();
+        }
+
+        document.querySelectorAll('.btn.comprar').forEach(button => {
+            button.addEventListener('click', () => {
+                const id = parseInt(button.getAttribute('data-id'));
+                const name = button.getAttribute('data-name');
+                const price = parseFloat(button.getAttribute('data-price'));
+                addToCart(id, name, price);
+            });
+        });
+
+        cartButton.addEventListener('click', () => {
+            const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+            cartModal.show();
+        });
+    </script>
 </body>
 </html>

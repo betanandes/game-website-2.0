@@ -4,7 +4,6 @@ session_start();
 require 'db.php';
 require 'functions.php';
 
-// Inicializa o contador de erros, se ainda não estiver definido
 if (!isset($_SESSION['tentativas'])) {
     $_SESSION['tentativas'] = 0;
 }
@@ -14,19 +13,17 @@ if (!isset($_SESSION['pergunta_selecionada'])) {
     $_SESSION['pergunta_selecionada'] = selecionarPerguntaAleatoria();  // Agora vem de functions.php
 }
 
-// Lógica principal de verificação e controle de tentativas
+// Verificação e controle de tentativas
 if ($_SESSION['tentativas'] < 2) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $resposta_digitada = $_POST['resposta'];
 
         // Verifica se a resposta inserida é a mesma da pergunta escolhida
         if (strtolower($resposta_digitada) == strtolower($_SESSION['pergunta_selecionada']['resposta'])) {
-            // Limpa as sessões temporárias e reseta o contador de tentativas
             unset($_SESSION['pergunta_selecionada']);
             unset($_SESSION['perguntas']);
             $_SESSION['tentativas'] = 0;
 
-            // Use $_SESSION para pegar o ID do usuário após o login
             $usuario_id = $_SESSION['usuario_id'];  // Armazenar o ID do usuário na sessão após o login
 
             // Registra o log com sucesso no 2FA
@@ -36,7 +33,7 @@ if ($_SESSION['tentativas'] < 2) {
             header("Location: index.php");
             exit();
         } else {
-            // Incrementa o contador de tentativas
+            // Adiciona o contador de tentativas
             $_SESSION['tentativas']++;
             $erro = "Resposta incorreta! Tentativa {$_SESSION['tentativas']} de 3.";
 

@@ -4,7 +4,7 @@ function selecionarPerguntaAleatoria() {
     if (isset($_SESSION['perguntas']) && !empty($_SESSION['perguntas'])) {
         return $_SESSION['perguntas'][array_rand($_SESSION['perguntas'])];
     } else {
-        header("Location: login.php"); // Redireciona se não houver perguntas
+        header("Location: login.php");
         exit();
     }
 }

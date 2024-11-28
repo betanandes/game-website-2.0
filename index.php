@@ -22,7 +22,6 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> 
-    <!-- Serve para linkar o css do bootstrap mais facilmente. -->
 </head>
 <body>
 
@@ -105,11 +104,11 @@ session_start();
                 </div>
 
                 <div class="carousel-item">
-                    <img src="assets/banner/stardew.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
+                    <img src="assets/banner/horizon.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
                 </div>
                 
                 <div class="carousel-item">
-                    <img src="assets/banner/gta.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
+                    <img src="assets/banner/assassins.webp" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
             </div>
 
 </div>
@@ -156,8 +155,8 @@ session_start();
 <section class="catalogo" id="ofertas">
     <div id="catalogo-jogos" class="jogos-container">
         <?php
-        require 'db.php'; // Inclua o arquivo de conexão com o banco
-        $sql = "SELECT * FROM produtos"; // Altere para o nome correto da sua tabela de produtos
+        require 'db.php'; 
+        $sql = "SELECT * FROM produtos"; 
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -218,10 +217,10 @@ session_start();
 </section>
 
 
+<!-- Avaliações -->
     <section class="avaliacoes">
         <h2>Avaliações da Loja</h2>
     
-        <!-- Área para exibir comentários em colunas -->
         <div id="comments" class="comments-flex">
             <div class="comment">
                 <img src="assets/icons/s2.jpeg" alt="Choi Jungeun" class="comment-avatar">
@@ -269,29 +268,29 @@ session_start();
             <div class="footerMenu">
                 <h1 class="fMenuTitle">Sobre Nós</h1>
                 <ul class="fList">
-                    <li class="fListItem">Empresa</li>
-                    <li class="fListItem">Contato</li>
-                    <li class="fListItem">Lojas</li>
+                <a href="error/error.html" style="text-decoration: none;"><li class="fListItem">Empresa</li></a> 
+                <a href="error/error.html" style="text-decoration: none;"><li class="fListItem">Contato</li></a>
+                <a href="error/error.html" style="text-decoration: none;"><li class="fListItem">Lojas</li></a>
                 </ul>
             </div>
 
             <div class="footerMenu">
                 <h1 class="fMenuTitle">Links Úteis</h1>
                 <ul class="fList">
-                    <li class="fListItem">Suporte</li>
-                    <li class="fListItem">Reembolso</li>
-                    <li class="fListItem">Feedback</li>
+                <a href="error/error.html" style="text-decoration: none;"><li class="fListItem">Suporte</li></a>
+                <a href="error/error.html" style="text-decoration: none;"><li class="fListItem">Reembolso</li></a>
+                <a href="error/error.html" style="text-decoration: none;"><li class="fListItem">Feedback</li></a>    
                 </ul>
             </div>
 
             <div class="footerMenu">
                 <h1 class="fMenuTitle">Categorias</h1>
                 <ul class="fList">
-                    <li class="fListItem">Ação</li>
-                    <li class="fListItem">Aventura</li>
-                    <li class="fListItem">Luta</li>
-                    <li class="fListItem">RPG</li>
-                    <li class="fListItem">Terror</li>
+                    <a href="#ofertas" style="text-decoration: none;"><li class="fListItem">Ação</li></a>
+                    <a href="#ofertas" style="text-decoration: none;"><li class="fListItem">Aventura</li></a>
+                    <a href="#ofertas" style="text-decoration: none;"><li class="fListItem">Luta</li></a>
+                    <a href="#ofertas" style="text-decoration: none;"><li class="fListItem">RPG</li></a>
+                    <a href="#ofertas" style="text-decoration: none;"><li class="fListItem">Terror</li></a>
           
                 </ul>
             </div>
@@ -323,6 +322,5 @@ session_start();
 
 <script src="home/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Serve para linkar o JS do bootstrap mais facilmente. -->
 </body>
 </html>

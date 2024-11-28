@@ -405,12 +405,10 @@ footer {
     margin-bottom: 10px;
     color: #fff;
     cursor: pointer;
-    
 }
 
 .fListItem:hover {
     color: var(--purple-one);
-
 }
 
 .footerRight {

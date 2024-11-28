@@ -1,5 +1,5 @@
 <?php
-require 'db.php'; // Conexão com o banco de dados
+require 'db.php';
 session_start();
 
 // Verifica se o usuário está logado e autorizado
@@ -133,14 +133,15 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         a.btn-back {
-            display: inline-block;
             padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
             background: rgba(182, 122, 255, 1);
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
+            cursor: pointer;
             transition: transform 0.3s, background-color 0.3s;
         }
 
@@ -154,8 +155,9 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="container">
         <h1>Logs de Autenticação</h1>
         <form method="GET">
-            <input type="text" name="pesquisa" placeholder="Pesquisar por nome, CPF ou ação" value="<?= htmlspecialchars($pesquisa) ?>">
+            <input type="text" name="pesquisa" placeholder="Pesquisar por nome ou CPF" value="<?= htmlspecialchars($pesquisa) ?>">
             <button type="submit">Pesquisar</button>
+            <a href="index.php" class="btn-back">Voltar</a>
         </form>
         <table>
             <thead>
@@ -200,7 +202,6 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </tbody>
 
         </table>
-        <a href="index.php" class="btn-back">Voltar</a>
     </div>
 </body>
 </html>

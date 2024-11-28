@@ -1,11 +1,11 @@
 <?php
-require 'db.php'; // Arquivo que faz conexão com db
-session_start(); // Inicia a sessão
+require 'db.php';
+session_start(); 
 
-// Verifique se há uma mensagem de erro a ser exibida
+// Verifica se há uma mensagem de erro a ser exibida
 if (isset($_SESSION['erro'])) {
     echo '<p style="color: red;">' . $_SESSION['erro'] . '</p>';
-    unset($_SESSION['erro']); // Limpa a mensagem após exibição
+    unset($_SESSION['erro']);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($usuario_existente) {
         $_SESSION['erro'] = "O email já está registrado!";
         header("Location: cadastro.php");
-        exit(); // Garante que o redirecionamento aconteça corretamente
+        exit(); 
     }
 
     // Se não houver erros, insere os dados no banco de dados
@@ -96,11 +96,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_SESSION['mensagem'] = "Cadastro realizado com sucesso! Faça login para acessar.";
         header("Location: login.php");
-        exit(); // Garante que o redirecionamento aconteça corretamente
+        exit();
     }
 }
 
-// Função para validar CPF
+
 function validarCPF($cpf) {
     $cpf = preg_replace('/[^0-9]/', '', $cpf);
     if (strlen($cpf) != 11) return false;
@@ -126,7 +126,7 @@ function validarCPF($cpf) {
     <link rel="stylesheet" href="cadastro.css">
     <script>
         function limparCampos() {
-            document.getElementById("formCadastro").reset(); // Reseta todos os campos do formulário
+            document.getElementById("formCadastro").reset(); 
         }
     </script>
 </head>

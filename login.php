@@ -1,19 +1,19 @@
 <?php
-require 'db.php'; // Arquivo que faz a conexão com o banco de dados
-require_once 'functions.php'; // Inclua a functions.php se for necessário usar alguma função
-session_start(); // Inicia a sessão
+require 'db.php'; 
+require_once 'functions.php'; 
+session_start(); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    // Verifica o usuário no banco de dados
+    
     $sql = "SELECT * FROM usuarios WHERE email = :email";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['email' => $email]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Verifica se o usuário existe e se a senha está correta
+    
     if ($usuario && password_verify($senha, $usuario['senha'])) {
 
             $_SESSION['login'] = $usuario['login']; 
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['tipo_usuario'] = $usuario['tipo_usuario']; 
             $_SESSION['usuario_id'] = $usuario['id'];
 
-        // Escolhe uma pergunta aleatória para 2FA
+       
         $_SESSION['perguntas'] = [
             ['pergunta' => $usuario['pergunta1'], 'resposta' => $usuario['resposta1']],
             ['pergunta' => $usuario['pergunta2'], 'resposta' => $usuario['resposta2']],
@@ -31,11 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pergunta_escolhida = $_SESSION['perguntas'][array_rand($_SESSION['perguntas'])];
         $_SESSION['pergunta_selecionada'] = $pergunta_escolhida;
 
-        // Não registra o log de login aqui, ele será registrado após a verificação do 2FA
+        
         header("Location: 2fa.php");
         exit();
     } else {
-        // Registra o log de falha de login
         registrarLog($pdo, null, 'Tentativa de login falha', 'Email ou senha incorretos!');
         $erro = "Email ou senha incorretos!";
     }
@@ -58,14 +57,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <div class="form">
-    <!-- Exibe a mensagem de sucesso ao se cadastrar -->
+    
     <?php if (isset($_SESSION['mensagem'])): ?>
         <p style="color: green;"><?= $_SESSION['mensagem']; unset($_SESSION['mensagem']); ?></p>
     <?php endif; ?>
 
-    <!-- unset($_SESSION[' ']) é para evitar que seja exibida novamente ao recarregar a página -->
 
-    <!-- Exibe mensagem de erro caso ocorra -->
     <?php if (isset($erro)): ?>
         <p style="color: red;"><?= $erro; ?></p>
     <?php endif; ?>

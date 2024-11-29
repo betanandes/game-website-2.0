@@ -1,122 +1,3 @@
-<?php
-require 'db.php';
-session_start(); 
-
-// Verifica se há uma mensagem de erro a ser exibida
-if (isset($_SESSION['erro'])) {
-    echo '<p style="color: red;">' . $_SESSION['erro'] . '</p>';
-    unset($_SESSION['erro']);
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Captura e sanitiza os dados
-    $nome = trim($_POST['nome']);
-    $data_nascimento = $_POST['data_nascimento'];
-    $sexo = $_POST['sexo'];
-    $nome_materno = trim($_POST['nome_materno']);
-    $cpf = trim($_POST['cpf']);
-    $email = trim($_POST['email']);
-    $telefone_celular = trim($_POST['telefone_celular']);
-    $telefone_fixo = trim($_POST['telefone_fixo']);
-    $cep = trim($_POST['cep']);
-    $endereco_completo = trim($_POST['endereco_completo']);
-    $login = trim($_POST['login']);
-    $senha = $_POST['senha']; 
-    $confirm_senha = $_POST['confirm_senha'];
-
-    // Perguntas de segurança e suas respostas
-    $resposta1 = trim($_POST['resposta1']);
-    $resposta2 = trim($_POST['resposta2']);
-    $resposta3 = trim($_POST['resposta3']);
-
-    // Validação dos campos
-    $erros = [];
-
-    // Nome entre 15 e 80 caracteres alfabéticos
-    if (strlen($nome) < 15 || strlen($nome) > 80 || !preg_match("/^[a-zA-Z\s]+$/", $nome)) {
-        $erros['nome'] = "O nome deve conter entre 15 e 80 caracteres alfabéticos.";
-    }
-
-    // Validação do CPF (implementação do dígito verificador)
-    if (!validarCPF($cpf)) {
-        $erros['cpf'] = "CPF inválido.";
-    }
-
-    // Verificação do login com exatamente 6 caracteres alfabéticos
-    if (strlen($login) != 6 || !preg_match("/^[a-zA-Z]+$/", $login)) {
-        $erros['login'] = "O login deve conter exatamente 6 caracteres alfabéticos.";
-    }
-
-    // Verificação da senha com exatamente 8 caracteres
-    if (strlen($senha) != 8 || strlen($confirm_senha) != 8) {
-        $erros['senha'] = "A senha e a confirmação de senha devem ter exatamente 8 caracteres.";
-    } elseif ($senha !== $confirm_senha) {
-        $erros['confirm_senha'] = "As senhas não coincidem.";
-    } else {
-        $senha_hash = password_hash($senha, PASSWORD_DEFAULT); // Criptografia da senha
-    }
-
-    // Verifica se o email já está registrado no banco
-    $sql = "SELECT * FROM usuarios WHERE email = :email";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['email' => $email]);
-    $usuario_existente = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($usuario_existente) {
-        $_SESSION['erro'] = "O email já está registrado!";
-        header("Location: cadastro.php");
-        exit(); 
-    }
-
-    // Se não houver erros, insere os dados no banco de dados
-    if (empty($erros)) {
-        $sql = "INSERT INTO usuarios (nome, data_nascimento, sexo, nome_materno, cpf, email, telefone_celular, telefone_fixo, cep, endereco_completo, login, senha, pergunta1, resposta1, pergunta2, resposta2, pergunta3, resposta3)
-                VALUES (:nome, :data_nascimento, :sexo, :nome_materno, :cpf, :email, :telefone_celular, :telefone_fixo, :cep, :endereco_completo, :login, :senha, :pergunta1, :resposta1, :pergunta2, :resposta2, :pergunta3, :resposta3)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            'nome' => $nome,
-            'data_nascimento' => $data_nascimento,
-            'sexo' => $sexo,
-            'nome_materno' => $nome_materno,
-            'cpf' => $cpf,
-            'email' => $email,
-            'telefone_celular' => $telefone_celular,
-            'telefone_fixo' => $telefone_fixo,
-            'cep' => $cep,
-            'endereco_completo' => $endereco_completo,
-            'login' => $login,
-            'senha' => $senha_hash,
-            'pergunta1' => 'Qual o nome de sua mãe?',
-            'resposta1' => $resposta1,
-            'pergunta2' => 'Qual é o seu CEP?',
-            'resposta2' => $resposta2,
-            'pergunta3' => 'Qual é sua data de nascimento?',
-            'resposta3' => $resposta3
-        ]);
-
-        $_SESSION['mensagem'] = "Cadastro realizado com sucesso! Faça login para acessar.";
-        header("Location: login.php");
-        exit();
-    }
-}
-
-
-function validarCPF($cpf) {
-    $cpf = preg_replace('/[^0-9]/', '', $cpf);
-    if (strlen($cpf) != 11) return false;
-
-    for ($t = 9; $t < 11; $t++) {
-        for ($d = 0, $c = 0; $c < $t; $c++) {
-            $d += $cpf[$c] * (($t + 1) - $c);
-        }
-
-        $d = ((10 * $d) % 11) % 10;
-        if ($cpf[$c] != $d) return false;
-    }
-    return true;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -125,9 +6,40 @@ function validarCPF($cpf) {
     <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="cadastro.css">
     <script>
+        // Função para limpar os campos do formulário
         function limparCampos() {
             document.getElementById("formCadastro").reset(); 
         }
+
+        // Função para buscar endereço pelo CEP
+        document.addEventListener('DOMContentLoaded', () => {
+            const cepInput = document.getElementById('cep');
+            const enderecoInput = document.getElementById('endereco_completo');
+
+            cepInput.addEventListener('blur', function () {
+                const cep = this.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+                if (cep.length === 8) {
+                    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (!data.erro) {
+                                enderecoInput.value = `${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}`;
+                            } else {
+                                alert('CEP não encontrado.');
+                                enderecoInput.value = '';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Erro ao buscar o CEP:', error);
+                            alert('Ocorreu um erro ao buscar o CEP. Tente novamente mais tarde.');
+                        });
+                } else {
+                    alert('CEP inválido. Por favor, insira 8 dígitos.');
+                    enderecoInput.value = '';
+                }
+            });
+        });
     </script>
 </head>
 <body>
@@ -140,7 +52,7 @@ function validarCPF($cpf) {
         <div class="input-group">
             <div class="input-box">
                 <label for="nome">Nome:</label>
-                <input type="text" minlength="15" maxlength="80"  name="nome" required>
+                <input type="text" minlength="15" maxlength="80" name="nome" required>
                 <?php if (isset($erros['nome'])): ?>
                     <p style="color: red;"><?= $erros['nome']; ?></p>
                 <?php endif; ?>
@@ -200,12 +112,12 @@ function validarCPF($cpf) {
         <div class="input-group">
             <div class="input-box">      
                 <label for="cep">CEP:</label>
-                <input type="text" name="cep" required>
+                <input type="text" name="cep" id="cep" required>
             </div>
 
             <div class="input-box"> 
                 <label for="endereco_completo">Endereço Completo:</label>
-                <input type="text" name="endereco_completo" required>
+                <input type="text" name="endereco_completo" id="endereco_completo" required>
             </div>
         </div>
 
@@ -262,4 +174,3 @@ function validarCPF($cpf) {
     </form>
 </body>
 </html>
-

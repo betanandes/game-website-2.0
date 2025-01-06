@@ -17,9 +17,10 @@ GameX é um site inspirado na PSN da PlayStation, dedicado à venda e distribui�
 1. Clone o repositório:  
    ```bash
    git clone https://github.com/betanandes/gamestore-website
-2. Importe o arquivo SQL chamado db.php   
+2. Importe o arquivo SQL chamado db.php
+   
+  ![GameX - 2025-01-06_19-43](https://github.com/user-attachments/assets/0596de11-0b06-4646-801a-c569276fafb6)
 
-![image](https://github.com/user-attachments/assets/d7169a21-7b68-4354-8c85-8456404f6104)
 
  
 

@@ -25,7 +25,7 @@ session_start();
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Navbaaaaaar -->
  
     <header>
         <nav>

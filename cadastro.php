@@ -1,12 +1,6 @@
 <?php
-require 'db.php';
-session_start(); 
-
-// Verifica se há uma mensagem de erro a ser exibida
-if (isset($_SESSION['erro'])) {
-    echo '<p style="color: red;">' . $_SESSION['erro'] . '</p>';
-    unset($_SESSION['erro']);
-}
+require 'db.php'; // Arquivo que faz conexão com db
+session_start(); // Inicia a sessão
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Captura e sanitiza os dados
@@ -47,14 +41,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $erros['login'] = "O login deve conter exatamente 6 caracteres alfabéticos.";
     }
 
-    // Verificação da senha com exatamente 8 caracteres
+    //Verificação da senha com exatamente 8 caracteres
     if (strlen($senha) != 8 || strlen($confirm_senha) != 8) {
         $erros['senha'] = "A senha e a confirmação de senha devem ter exatamente 8 caracteres.";
-    } elseif ($senha !== $confirm_senha) {
+    }elseif ($senha!==$confirm_senha){
         $erros['confirm_senha'] = "As senhas não coincidem.";
     } else {
         $senha_hash = password_hash($senha, PASSWORD_DEFAULT); // Criptografia da senha
     }
+   
 
     // Verifica se o email já está registrado no banco
     $sql = "SELECT * FROM usuarios WHERE email = :email";
@@ -65,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($usuario_existente) {
         $_SESSION['erro'] = "O email já está registrado!";
         header("Location: cadastro.php");
-        exit(); 
+        exit();
     }
 
     // Se não houver erros, insere os dados no banco de dados
@@ -100,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-
+// Função para validar CPF
 function validarCPF($cpf) {
     $cpf = preg_replace('/[^0-9]/', '', $cpf);
     if (strlen($cpf) != 11) return false;
@@ -124,11 +119,6 @@ function validarCPF($cpf) {
     <title>Crie sua conta</title>
     <link rel="shortcut icon" href="assets/gamex-favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="cadastro.css">
-    <script>
-        function limparCampos() {
-            document.getElementById("formCadastro").reset(); 
-        }
-    </script>
 </head>
 <body>
     <form method="POST" action="cadastro.php" id="formCadastro">
@@ -186,12 +176,12 @@ function validarCPF($cpf) {
         <!-- <div class="input-group">
             <div class="input-box">      
                 <label for="cep">CEP:</label>
-                <input type="text" name="cep" required>
+                <input type="text" name="cep" required onblur="buscaCEP()">
             </div>
 
-            <div class="input-box"> 
+            <div class="input-box">
                 <label for="endereco_completo">Endereço Completo:</label>
-                <input type="text" name="endereco_completo" required>
+                <input type="text" name="endereco_completo" id="endereco_completo"> 
             </div>
         </div> -->
 
@@ -204,9 +194,9 @@ function validarCPF($cpf) {
                 <?php endif; ?>
             </div>
 
-            <div class="input-box">   
+            <div class="input-box">
                 <label for="senha">Senha:</label>
-                <input type="password" name="senha" required>
+                <input type="password" maxlength="8" name="senha" required>
                 <?php if (isset($erros['senha'])): ?>
                     <p style="color: red;"><?= $erros['senha']; ?></p>
                 <?php endif; ?>
@@ -214,29 +204,29 @@ function validarCPF($cpf) {
         </div>
 
         <div class="input-group">
-            <div class="input-box">   
-                <label for="confirm_senha">Confirme a Senha:</label>
+            <div class="input-box">
+                <label for="confirm_senha">Confirmação de Senha:</label>
                 <input type="password" name="confirm_senha" required>
                 <?php if (isset($erros['confirm_senha'])): ?>
                     <p style="color: red;"><?= $erros['confirm_senha']; ?></p>
                 <?php endif; ?>
             </div>
+        
+            <div class="input-box">
+                <label for="resposta1">Qual é o nome de sua mãe?</label>
+                <input type="text" name="resposta1" required>
+            </div>
         </div>
 <!-- 
         <div class="input-group">
-            <div class="input-box">
-                <label for="resposta1">Qual o nome de sua mãe?</label>
-                <input type="text" name="resposta1" required>
-            </div>
-
-            <div class="input-box">
-                <label for="resposta2">Qual é o seu CEP?</label>
+            <div class="input-box">    
+                <label for="resposta2">Qual é o CEP?</label>
                 <input type="text" name="resposta2" required>
             </div>
 
             <div class="input-box">
                 <label for="resposta3">Qual é sua data de nascimento?</label>
-                <input type="date" name="resposta3" required>
+                <input type="text" name="resposta3" required>
             </div>
         </div> -->
 
@@ -244,8 +234,32 @@ function validarCPF($cpf) {
             <button type="submit" class="btn-primary">Cadastrar</button>
             <button type="button" class="btn-secondary" onclick="limparCampos()">Limpar</button>
         </div>
+    </div>
+</form>
 
-    </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Função para buscar o CEP
+        function buscaCEP() {
+            var cep = document.querySelector("input[name='cep']").value;
+            axios.get('https://viacep.com.br/ws/' + cep + '/json/')
+            .then(function(response) {
+                if (response.data.erro) {
+                    alert("CEP não encontrado.");
+                } else {
+                    document.getElementById("endereco_completo").value = response.data.logradouro + ", " + response.data.bairro + ", " + response.data.localidade + " - " + response.data.uf;
+                }
+            })
+            .catch(function(error) {
+                alert("Erro ao buscar CEP.");
+            });
+        }
+
+        // Função para limpar todos os campos
+        function limparCampos() {
+            const form = document.getElementById('formCadastro');
+            form.reset();
+        }
+    </script>
 </body>
 </html>
-

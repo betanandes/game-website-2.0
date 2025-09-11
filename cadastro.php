@@ -212,10 +212,10 @@ function validarCPF($cpf) {
                 <?php endif; ?>
             </div>
         
-            <div class="input-box">
+            <!-- <div class="input-box">
                 <label for="resposta1">Qual é o nome de sua mãe?</label>
                 <input type="text" name="resposta1" required>
-            </div>
+            </div> -->
         </div>
 <!-- 
         <div class="input-group">

@@ -136,23 +136,17 @@ function validarCPF($cpf) {
         <div class="bg-image" color="#4a4a4a;">
             <h1>Crie sua conta</h1>
         </div>
-
+<!-- 
         <div class="input-group">
-            <div class="input-box">
-                <label for="nome">Nome:</label>
-                <input type="text" minlength="15" maxlength="80"  name="nome" required>
-                <?php if (isset($erros['nome'])): ?>
-                    <p style="color: red;"><?= $erros['nome']; ?></p>
-                <?php endif; ?>
-            </div>
+          
 
             <div class="input-box">
                 <label for="data_nascimento">Data de Nascimento:</label>
                 <input type="date" name="data_nascimento">
             </div>
-        </div>
+        </div> -->
 
-        <div class="input-group">
+        <!-- <div class="input-group">
             <div class="input-box">    
                 <label for="sexo">Sexo:</label>
                 <select name="sexo">
@@ -165,17 +159,9 @@ function validarCPF($cpf) {
                 <label for="nome_materno">Nome Materno:</label>
                 <input type="text" name="nome_materno">
             </div>
-        </div>
+        </div> -->
 
         <div class="input-group">
-            <div class="input-box"> 
-                <label for="cpf">CPF:</label>
-                <input type="text" name="cpf" required>
-                <?php if (isset($erros['cpf'])): ?>
-                    <p style="color: red;"><?= $erros['cpf']; ?></p>
-                <?php endif; ?>
-            </div>    
-
             <div class="input-box"> 
                 <label for="email">Email:</label>
                 <input type="email" name="email" required>
@@ -185,7 +171,7 @@ function validarCPF($cpf) {
             </div>
         </div>    
 
-        <div class="input-group">
+        <!-- <div class="input-group">
             <div class="input-box">   
                 <label for="telefone_celular">Telefone Celular:</label>
                 <input type="text" name="telefone_celular" placeholder="(+55)XX-XXXXXXXX">
@@ -195,9 +181,9 @@ function validarCPF($cpf) {
                 <label for="telefone_fixo">Telefone Fixo:</label>
                 <input type="text" name="telefone_fixo" placeholder="(+55)XX-XXXXXXXX">
             </div>
-        </div>
+        </div> -->
 
-        <div class="input-group">
+        <!-- <div class="input-group">
             <div class="input-box">      
                 <label for="cep">CEP:</label>
                 <input type="text" name="cep" required>
@@ -207,11 +193,11 @@ function validarCPF($cpf) {
                 <label for="endereco_completo">Endereço Completo:</label>
                 <input type="text" name="endereco_completo" required>
             </div>
-        </div>
+        </div> -->
 
         <div class="input-group">
             <div class="input-box">   
-                <label for="login">Login:</label>
+                <label for="login">Username:</label>
                 <input type="text" name="login" maxlength="6" required>
                 <?php if (isset($erros['login'])): ?>
                     <p style="color: red;"><?= $erros['login']; ?></p>
@@ -236,7 +222,7 @@ function validarCPF($cpf) {
                 <?php endif; ?>
             </div>
         </div>
-
+<!-- 
         <div class="input-group">
             <div class="input-box">
                 <label for="resposta1">Qual o nome de sua mãe?</label>
@@ -252,11 +238,11 @@ function validarCPF($cpf) {
                 <label for="resposta3">Qual é sua data de nascimento?</label>
                 <input type="date" name="resposta3" required>
             </div>
-        </div>
+        </div> -->
 
-        <div class="input-box">
-            <button type="submit">Cadastrar</button>
-            <button type="button" onclick="limparCampos()">Limpar</button>
+        <div class="button-group"">
+            <button type="submit" class="btn-primary">Cadastrar</button>
+            <button type="button" class="btn-secondary" onclick="limparCampos()">Limpar</button>
         </div>
 
     </form>

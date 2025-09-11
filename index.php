@@ -125,21 +125,21 @@ session_start();
 
     <div class="carousel slide" id="carouselDemo" data-bs-wrap="true" data-bs-ride="carousel" data-bs-interval="2000">
 
-<div class="carousel-inner">
+        <div class="carousel-inner">
 
-    <div class="carousel-item active">
-        <img src="assets/banner/stone.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
-    </div>
+            <div class="carousel-item active">
+                <img src="assets/banner/village.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
+            </div>
 
-    <div class="carousel-item">
-        <img src="assets/banner/horizon.png" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
-    </div>
-    
-    <div class="carousel-item">
-        <img src="assets/banner/assassins.webp" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
-</div>
+            <div class="carousel-item">
+                <img src="assets/banner/far-cry.jpg" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
+            </div>
+            
+            <div class="carousel-item">
+                <img src="assets/banner/assassins.webp" class="w-100" alt="" style="width: 80%; max-height: 400px; object-fit: cover; margin: 0 auto;">
+            </div>
 
-</div>
+        </div>
 
 <button class="carousel-control-prev" 
 type="button"

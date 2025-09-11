@@ -1,64 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
+/* RESET */
 * {
-    
-    font-family: 'poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    transition: background-color 0.5s, color 0.5s;
-    background: rgb(254,213,255);
-    background: radial-gradient(circle, rgba(254,213,255,1) 18%, rgba(255,255,255,1) 100%);
-    color: black;
+    background: url("../assets/banner/banner-login.jpg") no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    color: #fff;
 }
 
-body.dark-mode {
-    background: rgb(182,122,255);
-    background: radial-gradient(circle, rgba(182,122,255,1) 18%, rgba(0,0,0,1) 100%);
-    color: white;
-}
-
+/* Card central */
 .form {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
+    background: rgba(0, 0, 0, 0.85); /* fundo escuro semi-transparente */
+    padding: 40px;
     border-radius: 8px;
-    gap: 30px;
-    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
-    height: fit-content;
-    background-color: #ffffff;
-    transition: background-color 0.5s ease;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
 }
 
-body.dark-mode .form {
-    background-color: #333333; /* Cor de fundo mais escura para o formulário no modo escuro */
+/* Título */
+.header h1 {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* Inputs */
+.input-box input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    border: 1px solid #222;
+    background: #1b1b1b;
+    color: #fff;
+    font-size: 14px;
+    transition: border 0.3s;
 }
 
-
-.header {
-   
-    display: flex;
-    align-items: center; /* Alinha verticalmente o conteúdo */
-   
+.input-box input:focus {
+    border: 1px solid #2a86ff;
+    outline: none;
 }
+
+/* Botão */
+.entrar button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #06BFFF 0%, #0072ff 100%);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.entrar button:hover {
+    transform: scale(1.03);
+    background: linear-gradient(90deg, #0072ff 0%, #06BFFF 100%);
+}
+
+/* Links */
+.create a {
+    color: #06a4ff;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.create a:hover {
+    text-decoration: underline;
+}
+
 
 .switch {
 
@@ -78,180 +102,4 @@ body.dark-mode .form {
     cursor: pointer;
     width: 60px;
 
-}
-
-.input-box {
-    position: relative;
-    margin: 20px 0;
-}
-
-.input-box input {
-    width: 400px;
-    padding: 15px 20px;
-    padding-right: 40px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #d9d9d9;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s, box-shadow 0.3s;
-    font-size: 16px;
-    background-color: #f9f9f9;
-}
-
-.input-box input:focus {
-    border-color: #ffd2ee;
-    box-shadow: 0 0 0 1px #e1bcff, 0 2px 4px rgba(0, 0, 0, 0.1);
-    outline: none;
-    background-color: white;
-}
-
-.input-box input::placeholder {
-    color: #999;
-    font-size: 14px;
-}
-
-/* .google button{
-    margin-bottom: 20px;
-    width: 320px;
-    height: 52px;
-    border-radius: 4px;
-    border: #C1C1C1 1px solid;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    -webkit-transition: .5s ease;
-    transition: .5s ease;
-
-
-}
-
-.google button:hover{
-
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-
-}
-
-.google button img{
-    margin-right: 10px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.google p{
-
-    color: #000000;
-    margin-right: 100px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: lighter;
-}
-
-.microsoft button{
-
-    margin-bottom: 25px;
-    width: 320px;
-    height: 52px;
-    border-radius: 4px;
-    margin-top: 10px;
-    border: #C1C1C1 1px solid;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    -webkit-transition: .5s ease;
-    transition: .5s ease;
-
-}
-
-.microsoft button:hover{
-
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-
-}
-
-.microsoft button img{
-    margin-right: 10px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.microsoft p{
-
-    color: #000000;
-    margin-right: 10px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: lighter;
-} */
-
-.or{
-    margin-top: 10px;
-    margin-bottom: 30px;
-}
-
-.create a{
-
-    text-decoration: none;
-    color: #ffc9f9;
-    -webkit-transition: .5s ease;
-    transition: .5s ease;
-
-}
-
-.create a:hover{
-
-    color: #cf99ff;
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-
-}
-
-.entrar{
-
-    margin-top: 20px;
-
-
-
-}
-
-.entrar button{
-
-    padding: 12px 50px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 10px;
-    color: white;
-    background: rgb(255, 217, 247);
-    background: linear-gradient(90deg, rgba(255, 217, 247, 1) 0%, rgba(182, 122, 255, 1) 100%);
-    transition: transform 0.3s, background-color 0.3s;
-}
-
-.entrar button:hover{
-    transform: scale(1.1);
-    background: rgb(168,113,235);
-    background: linear-gradient(130deg, rgba(168,113,235,1) 0%, rgba(0,0,0,1) 47%, rgba(182,122,255,1) 100%);
-}
-
-
-/* .entrar a{
-
-    font-family: 'Press Start 2P';
-    color: #fff49f;
-    text-decoration: none;
-
-} */
-
+} 

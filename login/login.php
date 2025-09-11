@@ -51,21 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 
-    <!-- <h1>Login</h1>
-    
-    
-    
-    <form method="POST" action="login.php">
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
-
-        <label for="senha">Senha:</label>
-        <input type="password" name="senha" required><br>
-
-        <button type="submit">Login</button>
-    </form> -->
-
-
     <div class="form">
     
     <!-- Exibe a mensagem de sucesso ao se cadastrar -->
@@ -86,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
                     <h1>Login</h1>
                     
-                    <img id="theme-toggle" src="login/midia/light-mode-icon.gif" alt="Switch to dark mode">
+                    <!-- <img id="theme-toggle" src="../assets/gamex-favicon.png" alt="Switch to dark mode"> -->
                 
                 </div>
             
@@ -128,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </div>
 
-    <script src="login/js/script.js"></script>
+    <!-- <script src="login/js/script.js"></script> -->
 
 </body>
 </html>
